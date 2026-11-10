@@ -1,0 +1,33 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../site.config';
+import { url } from '../utils';
+---
+<Base title="Contact" description="Get in touch about research collaborations, careers or media enquiries.">
+  <PageHero eyebrow="Contact" title="Get in touch" intro="Questions about our research, collaborations, careers or media? Send us a message and we'll reply as soon as we can." crumbs={[{ label: 'Contact', href: '/contact/' }]} />
+  <section>
+    <div class="wrap contact">
+      <ContactForm />
+      <aside class="info">
+        <div class="side-box"><h5>Email</h5><a class="ln" href={`mailto:${SITE.email}`}><Icon name="mail" size={18} />{SITE.email}</a></div>
+        <div class="side-box"><h5>Location</h5><p class="ln"><Icon name="pin" size={18} />{SITE.location}</p></div>
+        <div class="side-box"><h5>Online</h5>
+          <a class="ln" href={SITE.socials.github} target="_blank" rel="noopener"><Icon name="github" size={18} />GitHub</a>
+          <a class="ln" href={SITE.socials.linkedin} target="_blank" rel="noopener"><Icon name="linkedin" size={18} />LinkedIn</a>
+        </div>
+        <div class="side-box"><h5>Found a security issue?</h5><p>Please read our <a href={url('/responsible-disclosure/')}>responsible disclosure policy</a>.</p></div>
+      </aside>
+    </div>
+  </section>
+</Base>
+<style>
+  .contact{display:grid;grid-template-columns:1.5fr 1fr;gap:48px;align-items:start}
+  .info{display:grid;gap:16px}
+  .ln{display:flex;gap:10px;align-items:center;text-decoration:none;padding:4px 0}
+  a.ln:hover{color:var(--red-text)}
+  .info p a{color:var(--red-text)}
+  @media (max-width:860px){.contact{grid-template-columns:1fr}}
+</style>

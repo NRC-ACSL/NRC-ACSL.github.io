@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+---
+<Base title="Responsible disclosure">
+  <PageHero title="Responsible disclosure" intro="How to report a security vulnerability in our tools, datasets or website." crumbs={[{ label: 'Responsible disclosure', href: '/responsible-disclosure/' }]} />
+  <section><div class="wrap"><div class="prose">
+<p>We take the security of our open-source tools and infrastructure seriously. If you believe you have found a vulnerability, please let us know privately.</p>
+<h2>How to report</h2>
+<ul><li>Use the <a href="../contact/">contact form</a> and choose <strong>Security disclosure</strong>, or open a private security advisory on the relevant GitHub repository.</li><li>Include steps to reproduce, affected versions and potential impact.</li><li>Please do not disclose the issue publicly until we have had a reasonable time to fix it.</li></ul>
+<h2>Our commitment</h2>
+<p>We will acknowledge your report within 5 working days, keep you updated, and credit you (if you wish) once the issue is fixed. <em>(Placeholder policy. Review before publishing.)</em></p>
+  </div></div></section>
+</Base>

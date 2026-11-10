@@ -1,0 +1,78 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { url } from '../utils';
+// Edit open positions here. Set the list to [] when there are none.
+const positions = [
+  { title: 'Research Scientist, Autonomous Cyber Defence', type: 'Full-time', location: 'Ottawa, ON (hybrid)', summary: 'Lead research on LLM-based and RL-based defensive agents.' },
+  { title: 'Research Engineer, Cyber Ranges', type: 'Full-time', location: 'Ottawa, ON (hybrid)', summary: 'Build and scale our evaluation infrastructure and open-source tools.' },
+  { title: 'Postdoctoral Fellow, AI Evaluation', type: '2-year fellowship', location: 'Ottawa, ON', summary: 'Develop benchmarks and evaluation methods for autonomous agents.' },
+];
+---
+<Base title="Get involved" description="Careers, student programmes, collaborations and ways to support our work.">
+  <PageHero eyebrow="Get involved" title="Work with us" intro="Join the team, study with us, or partner on research that makes autonomous cyber defence safe and trustworthy." crumbs={[{ label: 'Get involved', href: '/get-involved/' }]}>
+    <div class="jump"><a href="#positions">Open positions</a><a href="#students">Students &amp; fellows</a><a href="#collaborate">Collaborate</a><a href="#support">Support us</a></div>
+  </PageHero>
+
+  <section id="positions">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Careers</span><h2>Open positions</h2><p>We value diverse backgrounds and encourage applications from under-represented groups in computing and security.</p></div></div>
+      {positions.length ? (
+        <ul class="list">
+          {positions.map((p) => (
+            <li><div class="item job">
+              <div><div class="row"><span class="pill">{p.type}</span><span class="pill">{p.location}</span></div><h4>{p.title}</h4><div class="sub">{p.summary}</div></div>
+              <a class="btn btn-outline btn-sm" href={url('/contact/')}>Apply / enquire</a>
+            </div></li>
+          ))}
+        </ul>
+      ) : <p>No open positions right now. You're welcome to send us your CV through the <a href={url('/contact/')}>contact form</a>.</p>}
+    </div>
+  </section>
+
+  <section class="alt" id="students">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Students &amp; fellows</span><h2>Learn with us</h2></div></div>
+      <div class="grid grid-3">
+        <div class="card"><div class="card-body"><h3>Co-op &amp; internships</h3><p>4–8 month placements for undergraduate and graduate students in computer science and engineering.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Graduate research</h3><p>Co-supervised MSc and PhD projects with partner universities.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Postdoctoral fellowships</h3><p>Two-year fellowships for early-career researchers to lead their own projects.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="collaborate">
+    <div class="wrap split">
+      <div><span class="eyebrow">Collaborate</span><h2 style="margin-top:8px">Partner with us</h2></div>
+      <div>
+        <p class="big">We collaborate with universities, industry and government on joint research, shared benchmarks and technology transfer.</p>
+        <ul class="ticks"><li>Joint research projects and co-authored publications</li><li>Access to our cyber ranges and evaluation tools</li><li>Visiting researcher programme</li><li>Workshops, challenges and community events</li></ul>
+        <a class="btn btn-red" href={url('/contact/')} style="margin-top:24px"><span class="arrow">Start a conversation</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="support">
+    <div class="wrap split">
+      <div><span class="eyebrow">Support</span><h2 style="margin-top:8px">Support our work</h2></div>
+      <div>
+        <p class="big">Funding and in-kind support help us keep our research open and our tools free for everyone.</p>
+        <a class="btn btn-outline" href={url('/contact/')} style="margin-top:20px">Talk to us about support</a>
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  section{scroll-margin-top:72px}
+  .jump{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+  .jump a{font-size:.88rem;text-decoration:none;padding:6px 14px;border:1px solid rgba(255,255,255,.25);border-radius:999px;color:var(--on-dark)}
+  .jump a:hover{border-color:#fff}
+  .job{display:flex;justify-content:space-between;align-items:center;gap:24px}
+  @media (max-width:640px){.job{flex-direction:column;align-items:flex-start}}
+  .split{display:grid;grid-template-columns:1fr 1.4fr;gap:48px}
+  @media (max-width:800px){.split{grid-template-columns:1fr;gap:20px}}
+  .big{font-size:1.2rem}
+  .ticks{list-style:none;margin-top:20px;display:grid;gap:10px}
+  .ticks li{padding-left:28px;position:relative}
+  .ticks li::before{content:"✓";position:absolute;left:0;color:var(--red-text);font-weight:700}
+</style>

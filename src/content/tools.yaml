@@ -1,0 +1,28 @@
+- id: cybergym-ca
+  name: CyberGym-CA
+  kind: Benchmark
+  summary: A reproducible environment for training and evaluating defensive cyber agents on realistic enterprise networks.
+  repo: https://github.com/nrc-acsl
+  license: Apache-2.0
+  area: evaluation
+- id: sentinel-agent
+  name: Sentinel Agent
+  kind: Tool
+  summary: Reference implementation of an LLM-based triage agent with policy guardrails and signed audit logs.
+  repo: https://github.com/nrc-acsl
+  license: MIT
+  area: autonomous-defence
+- id: redteam-traces
+  name: RedTeam Traces
+  kind: Dataset
+  summary: Anonymised transcripts from 500+ hours of AI-agent penetration-testing exercises.
+  repo: https://github.com/nrc-acsl
+  license: CC BY 4.0
+  area: adversarial-ai
+- id: oversight-kit
+  name: Oversight Kit
+  kind: Library
+  summary: Python library for adding human approval steps and explanations to autonomous agent actions.
+  repo: https://github.com/nrc-acsl
+  license: Apache-2.0
+  area: human-machine-teaming

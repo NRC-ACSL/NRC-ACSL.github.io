@@ -1,0 +1,55 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import { getCollection, getEntry, render, type CollectionEntry } from 'astro:content';
+import { url, formatDate, initials } from '../../utils';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('news');
+  return posts.map((post) => ({ params: { id: post.id }, props: { post } }));
+}
+const { post } = Astro.props as { post: CollectionEntry<'news'> };
+const d = post.data;
+const { Content } = await render(post);
+const author = d.author ? await getEntry(d.author) : undefined;
+const area = d.area ? await getEntry(d.area) : undefined;
+const more = (await getCollection('news')).filter((p) => p.id !== post.id).sort((a, b) => +b.data.date - +a.data.date).slice(0, 3);
+---
+<Base title={d.title} description={d.summary}>
+  <PageHero eyebrow={`${d.type} · ${formatDate(d.date, { year: 'numeric', month: 'long', day: 'numeric' })}`} title={d.title} intro={d.summary} crumbs={[{ label: 'News & Blog', href: '/news/' }, { label: d.type, href: `/news/?type=${d.type}` }]} />
+  <section>
+    <div class="wrap with-side">
+      <article class="prose"><Content /></article>
+      <aside class="side">
+        {author && (
+          <a class="side-box author" href={url(`/people/${author.id}/`)}>
+            <h5>Written by</h5>
+            <div class="a-row"><div class="avatar a-sm">{initials(author.data.name)}</div><div><b>{author.data.name}</b><span>{author.data.title}</span></div></div>
+          </a>
+        )}
+        {(d.eventDate || d.location) && (
+          <div class="side-box"><h5>Event details</h5><dl>
+            {d.eventDate && <div><dt>When</dt><dd>{d.eventDate}</dd></div>}
+            {d.location && <div><dt>Where</dt><dd>{d.location}</dd></div>}
+          </dl></div>
+        )}
+        {area && <div class="side-box"><h5>Research area</h5><a href={url(`/research/areas/${area.id}/`)}>{area.data.title}</a></div>}
+        <a class="btn btn-outline" href={url('/news/')} style="justify-content:center">← All news &amp; blog</a>
+      </aside>
+    </div>
+  </section>
+  <section class="alt">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Keep reading</span><h2>More from the team</h2></div></div>
+      <div class="grid grid-3">{more.map((p) => <NewsCard post={p} />)}</div>
+    </div>
+  </section>
+</Base>
+<style>
+  .author{text-decoration:none;display:block}
+  .author:hover b{color:var(--red-text)}
+  .a-row{display:flex;gap:12px;align-items:center}
+  .a-sm{width:48px;height:48px;font-size:.95rem;margin:0;flex-shrink:0}
+  .a-row b{display:block}.a-row span{font-size:.85rem;color:var(--muted)}
+</style>

@@ -1,0 +1,25 @@
+---
+// Placeholder logo: network nodes forming an "A"; the red node is the autonomous agent.
+// To use a real logo, put it at public/logo.svg and swap this SVG for <img src={url('/logo.svg')}>.
+import { SITE } from '../site.config';
+interface Props { size?: number; showText?: boolean }
+const { size = 42, showText = true } = Astro.props;
+---
+<span class="logo">
+  <svg width={size} height={size} viewBox="0 0 42 42" aria-hidden="true">
+    <rect width="42" height="42" rx="9" fill="#123352" />
+    <path d="M21 9 L11 32 M21 9 L31 32 M15 23 H27" stroke="#E8EEF4" stroke-width="2.2" stroke-linecap="round" />
+    <circle cx="11" cy="32" r="3" fill="#E8EEF4" /><circle cx="31" cy="32" r="3" fill="#E8EEF4" />
+    <circle cx="15" cy="23" r="2.4" fill="#E8EEF4" /><circle cx="27" cy="23" r="2.4" fill="#E8EEF4" />
+    <circle cx="21" cy="9" r="4" fill="#C8102E" />
+  </svg>
+  {showText && (
+    <span class="logo-text"><b>{SITE.shortName}</b><span>{SITE.tagline}</span></span>
+  )}
+</span>
+<style>
+  .logo{display:flex;align-items:center;gap:12px}
+  .logo-text{display:flex;flex-direction:column;line-height:1.1}
+  .logo-text b{font-size:1.05rem;letter-spacing:.06em;color:#fff}
+  .logo-text span{font-size:.78rem;color:var(--on-dark-muted);letter-spacing:.02em}
+</style>

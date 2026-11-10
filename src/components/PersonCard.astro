@@ -1,0 +1,12 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { url, initials } from '../utils';
+interface Props { person: CollectionEntry<'people'>; showNow?: boolean }
+const { person, showNow = false } = Astro.props;
+const p = person.data;
+---
+<a class="person" href={url(`/people/${person.id}/`)}>
+  <div class="avatar">{p.photo ? <img src={url(p.photo)} alt="" loading="lazy" /> : initials(p.name)}</div>
+  <b>{p.name}</b>
+  <span>{showNow && p.alumni?.now ? `Now: ${p.alumni.now}` : p.title}</span>
+</a>

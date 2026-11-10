@@ -1,0 +1,77 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import { url, initials } from '../../utils';
+
+export async function getStaticPaths() {
+  const people = await getCollection('people');
+  return people.map((person) => ({ params: { id: person.id }, props: { person } }));
+}
+const { person } = Astro.props as { person: CollectionEntry<'people'> };
+const d = person.data;
+const { Content } = await render(person);
+const projects = (await getCollection('projects')).filter((p) => p.data.lead?.id === person.id || p.data.team.some((t) => t.id === person.id));
+const posts = (await getCollection('news')).filter((n) => n.data.author?.id === person.id).sort((a, b) => +b.data.date - +a.data.date);
+const pubs = (await getCollection('publications')).filter((p) => p.data.people.some((x) => x.id === person.id)).sort((a, b) => b.data.year - a.data.year);
+const links = [
+  d.email && { icon: 'mail', label: 'Email', href: `mailto:${d.email}` },
+  d.website && { icon: 'link', label: 'Website', href: d.website },
+  d.scholar && { icon: 'scholar', label: 'Google Scholar', href: d.scholar },
+  d.github && { icon: 'github', label: 'GitHub', href: d.github },
+  d.linkedin && { icon: 'linkedin', label: 'LinkedIn', href: d.linkedin },
+].filter(Boolean) as { icon: string; label: string; href: string }[];
+---
+<Base title={d.name} description={`${d.name}, ${d.title}`}>
+  <div class="page-hero">
+    <div class="wrap profile-hero">
+      <div class="avatar big">{d.photo ? <img src={url(d.photo)} alt={d.name} /> : initials(d.name)}</div>
+      <div>
+        <nav class="crumbs"><a href={url('/')}>Home</a><span>/</span><a href={url('/people/')}>People</a>{d.alumni && (<><span>/</span><a href={url('/people/#alumni')}>Past members</a></>)}</nav>
+        <h1>{d.name}</h1>
+        <p>{d.title}{d.alumni && ` (${d.alumni.years})`}</p>
+        {d.alumni?.now && <p class="now">Now: {d.alumni.now}</p>}
+        <div class="links">
+          {links.map((l) => <a href={l.href} target={l.href.startsWith('mailto') ? undefined : '_blank'} rel="noopener"><Icon name={l.icon} size={17} />{l.label}</a>)}
+        </div>
+      </div>
+    </div>
+  </div>
+  <section>
+    <div class="wrap with-side">
+      <div>
+        <div class="prose"><h2 style="margin-top:0">Biography</h2><Content /></div>
+        {pubs.length > 0 && (
+          <div style="margin-top:48px">
+            <h2 style="font-size:1.5rem;margin-bottom:16px">Publications</h2>
+            <ul class="list">{pubs.map((p) => <li><a class="item" href={url(`/publications/#${p.id}`)}><div class="row"><span class="pill">{p.data.type}</span><span class="pill">{p.data.year}</span></div><h4>{p.data.title}</h4><div class="sub">{p.data.authors.join(', ')} · {p.data.venue}</div></a></li>)}</ul>
+          </div>
+        )}
+        {posts.length > 0 && (
+          <div style="margin-top:48px">
+            <h2 style="font-size:1.5rem;margin-bottom:16px">Writing</h2>
+            <div class="grid grid-2">{posts.map((p) => <NewsCard post={p} />)}</div>
+          </div>
+        )}
+      </div>
+      <aside class="side">
+        {d.interests.length > 0 && <div class="side-box"><h5>Research interests</h5><div class="row">{d.interests.map((i) => <span class="pill">{i}</span>)}</div></div>}
+        {projects.length > 0 && <div class="side-box"><h5>Projects</h5><ul class="plist">{projects.map((p) => <li><a href={url(`/research/projects/${p.id}/`)}>{p.data.title}</a></li>)}</ul></div>}
+        <a class="btn btn-outline" href={url('/people/')} style="justify-content:center">← All people</a>
+      </aside>
+    </div>
+  </section>
+</Base>
+<style>
+  .profile-hero{display:flex;gap:40px;align-items:center;padding-top:56px !important;padding-bottom:56px !important}
+  .big{width:160px;height:160px;max-width:none;margin:0;font-size:2.6rem;flex-shrink:0;border:3px solid rgba(255,255,255,.15)}
+  h1{font-size:clamp(2rem,4vw,2.8rem);margin:10px 0 6px}
+  .now{color:#FF9AA8 !important;font-size:1rem !important;margin-top:4px}
+  .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+  .links a{display:inline-flex;gap:6px;align-items:center;font-size:.88rem;text-decoration:none;padding:7px 13px;border:1px solid rgba(255,255,255,.22);border-radius:6px;color:var(--on-dark)}
+  .links a:hover{border-color:#fff}
+  .plist{list-style:none;display:grid;gap:10px;font-size:.95rem}
+  .plist a{text-decoration:none}.plist a:hover{color:var(--red-text)}
+  @media (max-width:640px){.profile-hero{flex-direction:column;align-items:flex-start;gap:20px}.big{width:112px;height:112px;font-size:1.8rem}}
+</style>

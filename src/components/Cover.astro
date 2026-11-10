@@ -1,0 +1,36 @@
+---
+// Generated cover art so posts look good without photos.
+interface Props { variant?: string; seed?: string }
+const { variant = 'nodes', seed = '' } = Astro.props;
+let h = 0; for (const c of seed) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+const r = (n: number) => { h = (h * 1103515245 + 12345) >>> 0; return h % n; };
+const bars = Array.from({ length: 7 }, (_, i) => ({ x: 40 + i * 48, h: 40 + r(110) }));
+const hot = r(7);
+const nodes = Array.from({ length: 9 }, () => ({ x: 30 + r(340), y: 25 + r(175) }));
+---
+<svg viewBox="0 0 400 225" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+  <rect width="400" height="225" fill="#0F2B47" />
+  {variant === 'rings' && (<>
+    <g stroke="#2A5B86" fill="none" stroke-width="1.5"><circle cx="200" cy="112" r="40"/><circle cx="200" cy="112" r="75"/><circle cx="200" cy="112" r="110"/></g>
+    <circle cx="200" cy="112" r="10" fill="#C8102E"/>
+    <g fill="#7FB3E6"><circle cx="275" cy="112" r="5"/><circle cx="147" cy="60" r="5"/><circle cx="240" cy="190" r="5"/><circle cx="110" cy="150" r="5"/></g>
+  </>)}
+  {variant === 'bars' && (
+    <g>{bars.map((b, i) => <rect x={b.x} y={200 - b.h} width="34" height={b.h} fill={i === hot ? '#C8102E' : '#2A5B86'} />)}</g>
+  )}
+  {variant === 'wave' && (<>
+    <path d="M20 160 C120 40, 200 200, 280 80 S360 120, 390 60" stroke="#4C83B8" stroke-width="2" fill="none"/>
+    <path d="M20 180 C120 120, 220 170, 390 110" stroke="#C8102E" stroke-width="2" fill="none" stroke-dasharray="6 6"/>
+  </>)}
+  {variant === 'grid' && (<>
+    <defs><pattern id={`p${seed.length}`} width="25" height="25" patternUnits="userSpaceOnUse"><path d="M25 0H0V25" fill="none" stroke="#1E4468"/></pattern></defs>
+    <rect width="400" height="225" fill={`url(#p${seed.length})`} />
+    <rect x={100 + r(150)} y={50 + r(75)} width="50" height="50" fill="#C8102E" opacity=".9"/>
+    <rect x={60 + r(250)} y={25 + r(125)} width="25" height="25" fill="#2A5B86"/>
+  </>)}
+  {variant === 'nodes' && (<>
+    <g stroke="#2A5B86" stroke-width="1.2">{nodes.slice(1).map((n, i) => <line x1={nodes[i].x} y1={nodes[i].y} x2={n.x} y2={n.y} />)}</g>
+    <g fill="#7FB3E6">{nodes.map((n) => <circle cx={n.x} cy={n.y} r="4" />)}</g>
+    <circle cx={nodes[4].x} cy={nodes[4].y} r="8" fill="#C8102E" />
+  </>)}
+</svg>

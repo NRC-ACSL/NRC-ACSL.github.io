@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import { url } from '../utils';
+const values = [
+  ['Rigour', 'Reproducible methods, open benchmarks and peer-reviewed results.'],
+  ['Openness', 'We release code, data and findings so others can build on them.'],
+  ['Responsibility', 'Human oversight and safety are built into every system we design.'],
+  ['Collaboration', 'We work with academia, industry and government, in Canada and internationally.'],
+];
+const timeline = [
+  ['2020', 'Group founded to study machine learning for network defence.'],
+  ['2022', 'First open-source cyber range released.'],
+  ['2024', 'Research programme expanded to LLM agents and red-teaming.'],
+  ['2026', 'Launch of CyberGym-CA, an open benchmark for defensive agents.'],
+];
+const partners = ['University partner', 'Industry partner', 'Government partner', 'Research network', 'International partner', 'Funding agency'];
+const reports = [['Annual report 2025', '#'], ['Annual report 2024', '#'], ['Research strategy 2024–2028', '#']];
+---
+<Base title="About" description="Our mission, vision, values and partners.">
+  <PageHero eyebrow="About us" title="Advancing safe, trustworthy autonomous cyber systems" intro="We are a research group studying how AI agents can defend digital infrastructure, and how to make sure they do so safely." crumbs={[{ label: 'About', href: '/about/' }]} />
+
+  <section>
+    <div class="wrap mv">
+      <div class="mv-block"><span class="eyebrow">Mission</span>
+        <p>To advance the science of autonomous cyber systems and give Canada and its partners trusted, open tools to defend digital infrastructure.</p></div>
+      <div class="mv-block"><span class="eyebrow">Vision</span>
+        <p>A world where autonomous cyber defence is safe, transparent and accountable, and where it strengthens human operators rather than replacing them.</p></div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">What we do</span><h2>From research to real-world impact</h2></div></div>
+      <div class="grid grid-3">
+        <div class="card"><div class="card-body"><h3>Fundamental research</h3><p>We publish peer-reviewed work on autonomous agents, adversarial AI and evaluation methods.</p></div></div>
+        <div class="card"><div class="card-body"><h3>Open tools &amp; benchmarks</h3><p>We build and release cyber ranges, datasets and libraries for the research community.</p><a class="link" href={url('/research/tools/')}><span class="arrow">See tools</span></a></div></div>
+        <div class="card"><div class="card-body"><h3>Advice &amp; partnerships</h3><p>We share evidence with partners in government and industry to inform standards and policy.</p><a class="link" href={url('/get-involved/#collaborate')}><span class="arrow">Work with us</span></a></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Our values</span><h2>How we work</h2></div></div>
+      <div class="grid grid-4">
+        {values.map(([t, d]) => <div class="value"><h3>{t}</h3><p>{d}</p></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">History</span><h2>Our story so far</h2></div></div>
+      <ol class="timeline">
+        {timeline.map(([y, t]) => <li><b>{y}</b><p>{t}</p></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section id="partners">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Partners &amp; funders</span><h2>Who we work with</h2><p>We collaborate with universities, industry and government organisations in Canada and abroad.</p></div></div>
+      <div class="partners">{partners.map((p) => <div class="partner">{p}</div>)}</div>
+    </div>
+  </section>
+
+  <section class="alt" id="reports">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Transparency</span><h2>Reports &amp; strategy</h2></div></div>
+      <ul class="list">
+        {reports.map(([t, h]) => <li><a class="item" href={h}><h4>{t}</h4><div class="sub">PDF · placeholder</div></a></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
+<style>
+  .mv{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+  .mv-block{border-left:3px solid var(--red);padding-left:28px}
+  .mv-block p{font-size:1.3rem;margin-top:10px;line-height:1.5}
+  @media (max-width:760px){.mv{grid-template-columns:1fr}}
+  .value{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .value p{color:var(--muted);font-size:.93rem;margin-top:6px}
+  .timeline{list-style:none;display:grid;grid-template-columns:repeat(4,1fr);gap:24px;border-top:2px solid var(--line);padding-top:24px}
+  .timeline li{position:relative}
+  .timeline li::before{content:"";position:absolute;top:-31px;left:0;width:12px;height:12px;border-radius:50%;background:var(--red)}
+  .timeline b{font-family:var(--mono);font-size:1.2rem}
+  .timeline p{color:var(--muted);margin-top:6px}
+  @media (max-width:760px){.timeline{grid-template-columns:1fr 1fr}}
+  .partners{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .partner{height:96px;border:1px dashed var(--line);border-radius:var(--radius);display:grid;place-items:center;color:var(--muted);font-family:var(--mono);font-size:.82rem}
+  @media (max-width:620px){.partners{grid-template-columns:1fr 1fr}}
+</style>

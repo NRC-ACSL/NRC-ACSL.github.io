@@ -1,0 +1,67 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import PersonCard from '../../components/PersonCard.astro';
+import { getCollection } from 'astro:content';
+import { url } from '../../utils';
+const people = await getCollection('people');
+const current = people.filter((p) => !p.data.alumni);
+const alumni = people.filter((p) => p.data.alumni).sort((a, b) => b.data.alumni!.years.localeCompare(a.data.alumni!.years));
+const groups = [
+  ['leadership', 'Leadership'],
+  ['researcher', 'Research scientists'],
+  ['engineer', 'Research engineers'],
+  ['postdoc', 'Postdoctoral fellows'],
+  ['student', 'Students'],
+  ['advisor', 'Advisors'],
+] as const;
+const roleLabel: Record<string, string> = { leadership: 'Leadership', researcher: 'Researcher', engineer: 'Engineer', postdoc: 'Postdoc', student: 'Student', advisor: 'Advisor' };
+---
+<Base title="People" description="Our team members, advisors and alumni.">
+  <PageHero eyebrow="People" title="Our team" intro="Researchers, engineers, fellows and students working on autonomous cyber systems, plus the alumni who helped build the group." crumbs={[{ label: 'People', href: '/people/' }]}>
+    <div class="jump">
+      {groups.filter(([g]) => current.some((p) => p.data.group === g)).map(([g, label]) => <a href={`#${g}`}>{label}</a>)}
+      <a href="#alumni">Past members</a>
+    </div>
+  </PageHero>
+  {groups.map(([g, label], i) => {
+    const list = current.filter((p) => p.data.group === g).sort((a, b) => a.data.order - b.data.order);
+    return list.length > 0 && (
+      <section id={g} class:list={['group', { alt: i % 2 === 1 }]}>
+        <div class="wrap">
+          <h2 class="g-title">{label}</h2>
+          <div class="people">{list.map((p) => <PersonCard person={p} />)}</div>
+        </div>
+      </section>
+    );
+  })}
+  <section id="alumni" class="group">
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Alumni</span><h2>Past members</h2><p>Former team members and where they went next.</p></div></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Role</th><th>Years</th><th>Now</th></tr></thead>
+          <tbody>
+            {alumni.map((p) => (
+              <tr><td><a href={url(`/people/${p.id}/`)}><b>{p.data.name}</b></a></td><td>{p.data.title}</td><td>{p.data.alumni!.years}</td><td>{p.data.alumni!.now ?? '—'}</td></tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+  <section class="alt" style="padding:56px 0">
+    <div class="wrap cta-row">
+      <div><h2 style="font-size:1.6rem">Want to join us?</h2><p style="color:var(--muted);margin-top:6px">We regularly hire researchers and engineers and host students and fellows.</p></div>
+      <a class="btn btn-red" href={url('/get-involved/')}><span class="arrow">See opportunities</span></a>
+    </div>
+  </section>
+</Base>
+<style>
+  .group{padding:64px 0;scroll-margin-top:72px}
+  .g-title{font-size:1.5rem;margin-bottom:32px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+  .jump{display:flex;gap:8px;flex-wrap:wrap;margin-top:24px}
+  .jump a{font-size:.88rem;text-decoration:none;padding:6px 14px;border:1px solid rgba(255,255,255,.25);border-radius:999px;color:var(--on-dark)}
+  .jump a:hover{border-color:#fff}
+  .cta-row{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+</style>

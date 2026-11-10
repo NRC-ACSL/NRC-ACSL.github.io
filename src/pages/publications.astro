@@ -1,0 +1,64 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+import PubItem from '../components/PubItem.astro';
+import { getCollection } from 'astro:content';
+const pubs = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year || a.data.title.localeCompare(b.data.title));
+const areas = (await getCollection('areas')).sort((a, b) => a.data.order - b.data.order);
+const areaTitle = Object.fromEntries(areas.map((a) => [a.id, a.data.title]));
+const years = [...new Set(pubs.map((p) => p.data.year))];
+const types = [...new Set(pubs.map((p) => p.data.type))].sort();
+---
+<Base title="Publications" description="Peer-reviewed papers, preprints, reports and theses.">
+  <PageHero eyebrow="Publications" title="Publications" intro="Peer-reviewed papers, preprints, technical reports and theses from our group." crumbs={[{ label: 'Publications', href: '/publications/' }]} />
+  <section>
+    <div class="wrap">
+      <div class="filters">
+        <input id="q" type="search" placeholder="Search title, author, venue…" aria-label="Search publications" />
+        <select id="year" aria-label="Year"><option value="">All years</option>{years.map((y) => <option>{y}</option>)}</select>
+        <select id="type" aria-label="Type"><option value="">All types</option>{types.map((t) => <option>{t}</option>)}</select>
+        <select id="area" aria-label="Research area"><option value="">All areas</option>{areas.map((a) => <option value={a.id}>{a.data.title}</option>)}</select>
+      </div>
+      <p class="count" id="count"></p>
+      {years.map((y) => (
+        <div class="year-group" data-year={y}>
+          <h2 class="year">{y}</h2>
+          <ul class="list">
+            {pubs.filter((p) => p.data.year === y).map((p) => <PubItem pub={p} areaTitle={p.data.area ? areaTitle[p.data.area.id] : undefined} />)}
+          </ul>
+        </div>
+      ))}
+      <p class="empty" id="empty">No publications match your search.</p>
+    </div>
+  </section>
+</Base>
+<style>
+  .year{font-family:var(--mono);font-size:1.3rem;font-weight:500;color:var(--muted);margin:40px 0 12px}
+  .year-group:first-of-type .year{margin-top:8px}
+</style>
+<script>
+  const q = document.getElementById('q') as HTMLInputElement;
+  const year = document.getElementById('year') as HTMLSelectElement;
+  const type = document.getElementById('type') as HTMLSelectElement;
+  const area = document.getElementById('area') as HTMLSelectElement;
+  const params = new URLSearchParams(location.search);
+  if (params.get('area')) area.value = params.get('area')!;
+  if (params.get('q')) q.value = params.get('q')!;
+  function apply() {
+    const term = q.value.trim().toLowerCase();
+    let total = 0;
+    document.querySelectorAll<HTMLElement>('.year-group').forEach((g) => {
+      let n = 0;
+      g.querySelectorAll<HTMLElement>('.pub').forEach((p) => {
+        const show = (!term || p.dataset.search!.includes(term)) && (!year.value || p.dataset.year === year.value) &&
+          (!type.value || p.dataset.type === type.value) && (!area.value || p.dataset.area === area.value);
+        p.style.display = show ? '' : 'none'; if (show) n++;
+      });
+      g.style.display = n ? '' : 'none'; total += n;
+    });
+    document.getElementById('count')!.textContent = `${total} publication${total === 1 ? '' : 's'}`;
+    document.getElementById('empty')!.style.display = total ? 'none' : 'block';
+  }
+  [q, year, type, area].forEach((el) => el.addEventListener('input', apply));
+  apply();
+</script>

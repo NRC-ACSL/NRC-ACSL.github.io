@@ -1,0 +1,43 @@
+---
+import Logo from './Logo.astro';
+import { SITE } from '../site.config';
+import { url } from '../utils';
+const year = new Date().getFullYear();
+const cols = [
+  { h: 'About', links: [['Mission & vision', '/about/'], ['Partners', '/about/#partners'], ['Annual reports', '/about/#reports']] },
+  { h: 'Research', links: [['Research areas', '/research/'], ['Projects', '/research/projects/'], ['Publications', '/publications/'], ['Tools & datasets', '/research/tools/']] },
+  { h: 'People', links: [['Members', '/people/'], ['Past members', '/people/#alumni'], ['Careers', '/get-involved/']] },
+  { h: 'Connect', links: [['Contact', '/contact/'], ['News & blog', '/news/'], ['GitHub', SITE.socials.github], ['Responsible disclosure', '/responsible-disclosure/']] },
+];
+---
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <a href={url('/')} style="text-decoration:none"><Logo size={36} /></a>
+        <p class="blurb">{SITE.description}</p>
+        <p class="blurb">{SITE.location}<br /><a href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+      </div>
+      {cols.map((c) => (
+        <div>
+          <h5>{c.h}</h5>
+          <ul>{c.links.map(([label, href]) => <li><a href={url(href)}>{label}</a></li>)}</ul>
+        </div>
+      ))}
+    </div>
+    <div class="foot-bottom">
+      <span>© {year} {SITE.name}</span>
+      <span><a href={url('/privacy/')}>Privacy</a> · <a href={url('/accessibility/')}>Accessibility</a></span>
+    </div>
+  </div>
+</footer>
+<style>
+  .site-footer{background:var(--navy-900);color:var(--on-dark-muted);padding:64px 0 32px;font-size:.92rem}
+  .foot{display:grid;grid-template-columns:1.6fr repeat(4,1fr);gap:32px}
+  .blurb{margin-top:16px;max-width:320px}
+  h5{color:#fff;font-size:.78rem;margin-bottom:14px;letter-spacing:.1em;text-transform:uppercase;font-family:var(--mono);font-weight:500}
+  ul{list-style:none;display:grid;gap:8px}
+  a{text-decoration:none}a:hover{color:#fff}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:48px;padding-top:24px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.82rem}
+  @media (max-width:900px){.foot{grid-template-columns:1fr 1fr}.foot > div:first-child{grid-column:1/-1}}
+</style>

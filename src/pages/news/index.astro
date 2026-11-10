@@ -1,0 +1,35 @@
+---
+import Base from '../../layouts/Base.astro';
+import PageHero from '../../components/PageHero.astro';
+import NewsCard from '../../components/NewsCard.astro';
+import { getCollection } from 'astro:content';
+const posts = (await getCollection('news')).sort((a, b) => +b.data.date - +a.data.date);
+const types = ['All', ...new Set(posts.map((p) => p.data.type))];
+---
+<Base title="News & Blog" description="News, events, research blog posts and reports.">
+  <PageHero eyebrow="News & blog" title="News, events & insights" intro="Announcements, upcoming events and research write-ups from our team." crumbs={[{ label: 'News & Blog', href: '/news/' }]} />
+  <section>
+    <div class="wrap">
+      <div class="filters">
+        <div class="chips" role="group" aria-label="Filter by type">
+          {types.map((t, i) => <button class="chip" type="button" data-type={t} aria-pressed={i === 0 ? 'true' : 'false'}>{t}</button>)}
+        </div>
+      </div>
+      <div class="grid grid-3">
+        {posts.map((p) => <div class="post" data-type={p.data.type} style="display:flex"><NewsCard post={p} /></div>)}
+      </div>
+    </div>
+  </section>
+</Base>
+<style>.post > :global(.card){width:100%}</style>
+<script>
+  const chips = document.querySelectorAll<HTMLButtonElement>('.chip');
+  const posts = document.querySelectorAll<HTMLElement>('.post');
+  function set(t: string) {
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.type === t)));
+    posts.forEach((p) => (p.style.display = t === 'All' || p.dataset.type === t ? 'flex' : 'none'));
+  }
+  chips.forEach((c) => c.addEventListener('click', () => set(c.dataset.type!)));
+  const t = new URLSearchParams(location.search).get('type');
+  if (t && [...chips].some((c) => c.dataset.type === t)) set(t);
+</script>

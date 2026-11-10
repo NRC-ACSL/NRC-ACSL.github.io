@@ -1,0 +1,14 @@
+---
+import Base from '../layouts/Base.astro';
+import PageHero from '../components/PageHero.astro';
+---
+<Base title="Privacy">
+  <PageHero title="Privacy" intro="How we handle personal information on this website." crumbs={[{ label: 'Privacy', href: '/privacy/' }]} />
+  <section><div class="wrap"><div class="prose">
+<p>This website does not use tracking cookies or analytics. <em>(Placeholder. Update if you add analytics.)</em></p>
+<h2>Contact form</h2>
+<p>Messages sent through the contact form are delivered by Formspree and used only to respond to your enquiry.</p>
+<h2>Questions</h2>
+<p>Contact us through the <a href="../contact/">contact page</a>.</p>
+  </div></div></section>
+</Base>

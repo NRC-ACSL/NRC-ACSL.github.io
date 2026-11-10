@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "group": {
+      "type": "string",
+      "enum": [
+        "leadership",
+        "researcher",
+        "engineer",
+        "postdoc",
+        "student",
+        "advisor"
+      ]
+    },
+    "order": {
+      "default": 100,
+      "type": "number"
+    },
+    "photo": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "website": {
+      "type": "string"
+    },
+    "github": {
+      "type": "string"
+    },
+    "scholar": {
+      "type": "string"
+    },
+    "linkedin": {
+      "type": "string"
+    },
+    "interests": {
+      "default": [],
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "alumni": {
+      "type": "object",
+      "properties": {
+        "years": {
+          "type": "string"
+        },
+        "now": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "years"
+      ]
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "name",
+    "title",
+    "group"
+  ]
+}

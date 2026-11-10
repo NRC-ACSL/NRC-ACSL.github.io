@@ -1,0 +1,26 @@
+---
+import { url } from '../utils';
+interface Props { title: string; eyebrow?: string; intro?: string; crumbs?: { label: string; href: string }[] }
+const { title, eyebrow, intro, crumbs = [] } = Astro.props;
+---
+<div class="page-hero">
+  <svg class="hero-grid" viewBox="0 0 1200 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <defs><pattern id="pg" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#1E4468" stroke-width="1"/></pattern></defs>
+    <rect width="1200" height="300" fill="url(#pg)"/>
+    <g stroke="#2A5B86" stroke-width="1.2" fill="none"><path d="M860 60 L980 140 L1100 90 M980 140 L1040 240"/></g>
+    <g fill="#4C83B8"><circle cx="860" cy="60" r="4"/><circle cx="1100" cy="90" r="4"/><circle cx="1040" cy="240" r="4"/></g>
+    <circle cx="980" cy="140" r="6" fill="#C8102E"/>
+  </svg>
+  <div class="wrap">
+    {crumbs.length > 0 && (
+      <nav class="crumbs" aria-label="Breadcrumb">
+        <a href={url('/')}>Home</a>
+        {crumbs.map((c) => (<><span>/</span><a href={url(c.href)}>{c.label}</a></>))}
+      </nav>
+    )}
+    {eyebrow && <span class="eyebrow" style="display:block;margin-top:16px">{eyebrow}</span>}
+    <h1>{title}</h1>
+    {intro && <p>{intro}</p>}
+    <slot />
+  </div>
+</div>

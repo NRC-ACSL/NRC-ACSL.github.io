@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Icon from './Icon.astro';
+interface Props { pub: CollectionEntry<'publications'>; areaTitle?: string }
+const { pub, areaTitle } = Astro.props;
+const p = pub.data;
+const bib = p.bibtex ?? `@${p.type === 'Journal' ? 'article' : p.type === 'Thesis' ? 'phdthesis' : p.type === 'Report' ? 'techreport' : 'inproceedings'}{${pub.id},
+  title = {${p.title}},
+  author = {${p.authors.join(' and ')}},
+  ${p.type === 'Journal' ? 'journal' : 'booktitle'} = {${p.venue}},
+  year = {${p.year}}${p.doi ? `,\n  doi = {${p.doi}}` : ''}
+}`;
+const search = [p.title, p.authors.join(' '), p.venue, p.year, p.type, areaTitle].join(' ').toLowerCase();
+---
+<li class="pub" id={pub.id} data-year={p.year} data-type={p.type} data-area={p.area?.id ?? ''} data-search={search}>
+  <div class="item">
+    <div class="row">
+      <span class="pill">{p.type}</span><span class="pill">{p.year}</span>
+      {areaTitle && <span class="pill">{areaTitle}</span>}
+      {p.award && <span class="tag">🏆 {p.award}</span>}
+    </div>
+    <h4>{p.title}</h4>
+    <div class="sub">{p.authors.join(', ')} · <em>{p.venue}</em></div>
+    <div class="row pub-links">
+      {p.pdf && <a class="btn btn-outline btn-sm" href={p.pdf} target="_blank" rel="noopener"><Icon name="doc" size={15} />PDF</a>}
+      {p.doi && <a class="btn btn-outline btn-sm" href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener"><Icon name="link" size={15} />DOI</a>}
+      {p.code && <a class="btn btn-outline btn-sm" href={p.code} target="_blank" rel="noopener"><Icon name="code" size={15} />Code</a>}
+      <button class="btn btn-outline btn-sm bib-btn" type="button" data-bib={bib}>Copy BibTeX</button>
+    </div>
+  </div>
+</li>
+<style>
+  .pub-links{margin-top:12px}
+  .pub .item{padding:22px 0}
+</style>

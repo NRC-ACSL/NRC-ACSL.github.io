@@ -1,0 +1,83 @@
+# Add a new publication by copying a block. "id" must be unique.
+# people: team members (file names in src/content/people) so it appears on their profile
+# type: Conference | Journal | Preprint | Workshop | Report | Thesis
+- id: verifiable-policies-2026
+  title: Towards verifiable policies for autonomous network defence agents
+  authors: [A. Author, B. Author, C. Author]
+  people: [alex-smith, jane-doe]
+  venue: IEEE Security & Privacy Workshops
+  year: 2026
+  type: Workshop
+  area: autonomous-defence
+  pdf: https://arxiv.org/
+  code: https://github.com/nrc-acsl
+- id: cybergym-2026
+  title: "CyberGym-CA: a reproducible environment for evaluating defensive agents"
+  authors: [D. Author, A. Author]
+  people: [sam-chen, marc-tremblay]
+  venue: Computers & Security
+  year: 2026
+  type: Journal
+  area: evaluation
+  doi: 10.0000/placeholder
+  award: Best Paper Award
+- id: deception-robustness-2026
+  title: Measuring deception robustness in LLM-based security assistants
+  authors: [E. Author, F. Author]
+  people: [priya-lal]
+  venue: arXiv preprint
+  year: 2026
+  type: Preprint
+  area: adversarial-ai
+  pdf: https://arxiv.org/
+- id: oversight-2025
+  title: Human oversight patterns for autonomous incident response
+  authors: [G. Author, A. Author, H. Author]
+  people: [rina-kaur, jane-doe]
+  venue: ACM CHI Conference on Human Factors in Computing Systems
+  year: 2025
+  type: Conference
+  area: human-machine-teaming
+  pdf: https://arxiv.org/
+- id: rl-defence-2025
+  title: Reinforcement learning for adaptive network defence under partial observability
+  authors: [B. Author, C. Author]
+  people: [alex-smith, david-alum]
+  venue: NeurIPS Workshop on Machine Learning for Security
+  year: 2025
+  type: Workshop
+  area: autonomous-defence
+- id: llm-pentest-2025
+  title: How capable are LLM agents at offensive security? A systematic evaluation
+  authors: [F. Author, D. Author, E. Author]
+  people: [priya-lal, luc-gagnon]
+  venue: USENIX Security Symposium
+  year: 2025
+  type: Conference
+  area: adversarial-ai
+  pdf: https://arxiv.org/
+  code: https://github.com/nrc-acsl
+- id: tech-report-2025
+  title: State of autonomous cyber defence in Canada, 2025
+  authors: [NRC Autonomous Cyber Research]
+  venue: Technical report
+  year: 2025
+  type: Report
+  pdf: https://example.org/
+- id: benchmark-survey-2024
+  title: A survey of benchmarks for autonomous cyber operations
+  authors: [C. Author, A. Author]
+  people: [sam-chen, alex-smith]
+  venue: ACM Computing Surveys
+  year: 2024
+  type: Journal
+  area: evaluation
+  doi: 10.0000/placeholder
+- id: thesis-2024
+  title: Explainable decision-making for cyber defence agents
+  authors: [J. Former]
+  people: [john-former]
+  venue: PhD thesis, University of Placeholder
+  year: 2024
+  type: Thesis
+  area: human-machine-teaming

@@ -1,0 +1,60 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import PersonCard from '../../../components/PersonCard.astro';
+import PubItem from '../../../components/PubItem.astro';
+import Icon from '../../../components/Icon.astro';
+import { getCollection, getEntry, getEntries, render, type CollectionEntry } from 'astro:content';
+import { url } from '../../../utils';
+
+export async function getStaticPaths() {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({ params: { id: project.id }, props: { project } }));
+}
+const { project } = Astro.props as { project: CollectionEntry<'projects'> };
+const d = project.data;
+const { Content } = await render(project);
+const area = await getEntry(d.area);
+const lead = d.lead ? await getEntry(d.lead) : undefined;
+const team = await getEntries(d.team);
+const pubs = (await getCollection('publications')).filter((p) => p.data.area?.id === d.area.id).sort((a, b) => b.data.year - a.data.year).slice(0, 4);
+---
+<Base title={d.title} description={d.summary}>
+  <PageHero eyebrow={area.data.title} title={d.title} intro={d.summary} crumbs={[{ label: 'Research', href: '/research/' }, { label: 'Projects', href: '/research/projects/' }]} />
+  <section>
+    <div class="wrap with-side">
+      <div>
+        <div class="prose"><Content /></div>
+        {(lead || team.length > 0) && (
+          <div style="margin-top:56px">
+            <h2 style="font-size:1.6rem;margin-bottom:24px">Team</h2>
+            <div class="people">
+              {lead && <PersonCard person={lead} />}
+              {team.map((p) => <PersonCard person={p} showNow={!!p.data.alumni} />)}
+            </div>
+          </div>
+        )}
+        {pubs.length > 0 && (
+          <div style="margin-top:56px">
+            <h2 style="font-size:1.6rem;margin-bottom:16px">Related publications</h2>
+            <ul class="list">{pubs.map((p) => <PubItem pub={p} />)}</ul>
+          </div>
+        )}
+      </div>
+      <aside class="side">
+        <div class="side-box">
+          <h5>Project details</h5>
+          <dl>
+            <div><dt>Status</dt><dd><span class={`pill status-${d.status}`}>{d.status}</span></dd></div>
+            <div><dt>Period</dt><dd>{d.start}{d.end ? `–${d.end}` : '–present'}</dd></div>
+            <div><dt>Research area</dt><dd><a href={url(`/research/areas/${area.id}/`)}>{area.data.title}</a></dd></div>
+            {lead && <div><dt>Project lead</dt><dd><a href={url(`/people/${lead.id}/`)}>{lead.data.name}</a></dd></div>}
+            {d.partners.length > 0 && <div><dt>Partners</dt><dd>{d.partners.join(', ')}</dd></div>}
+          </dl>
+        </div>
+        {d.repo && <a class="btn btn-outline" href={d.repo} target="_blank" rel="noopener" style="justify-content:center"><Icon name="github" size={18} />View code on GitHub</a>}
+        <a class="btn btn-red" href={url('/contact/')} style="justify-content:center">Collaborate on this project</a>
+      </aside>
+    </div>
+  </section>
+</Base>

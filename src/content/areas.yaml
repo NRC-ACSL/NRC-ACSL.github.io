@@ -1,0 +1,34 @@
+# Research areas. "id" is used in URLs (/research/areas/<id>/) and to link projects/publications.
+- id: autonomous-defence
+  title: Autonomous cyber defence
+  order: 1
+  icon: shield
+  summary: Agents that detect, triage and respond to intrusions in real time.
+  description: >-
+    We design AI agents that monitor networks, reason about suspicious activity and take
+    containment actions within safe, policy-defined limits. Our work spans reinforcement
+    learning, LLM-based planning and formal guarantees on agent behaviour.
+- id: adversarial-ai
+  title: Adversarial AI & red-teaming
+  order: 2
+  icon: target
+  summary: Stress-testing AI systems against offensive and deceptive behaviour.
+  description: >-
+    We study how AI systems can be attacked, manipulated or misused, and how capable AI
+    agents perform in offensive security tasks. The results inform safeguards and policy.
+- id: evaluation
+  title: Evaluation & benchmarks
+  order: 3
+  icon: chart
+  summary: Open environments and metrics to measure agent capability and safety.
+  description: >-
+    We build reproducible cyber ranges, benchmarks and evaluation methods so that
+    autonomous cyber agents can be compared fairly and their risks understood.
+- id: human-machine-teaming
+  title: Human–machine teaming
+  order: 4
+  icon: person
+  summary: Keeping humans in control with explainable, auditable autonomy.
+  description: >-
+    We research interfaces, explanations and oversight mechanisms that let security
+    operators understand, direct and audit autonomous systems.

@@ -1,0 +1,249 @@
+---
+import Base from '../layouts/Base.astro';
+import NewsCard from '../components/NewsCard.astro';
+import PersonCard from '../components/PersonCard.astro';
+import Icon from '../components/Icon.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { getCollection } from 'astro:content';
+import { SITE } from '../site.config';
+import { url, formatDate } from '../utils';
+
+const news = (await getCollection('news')).sort((a, b) => +b.data.date - +a.data.date);
+const featured = news.filter((n) => n.data.featured).slice(0, 3);
+const latestNews = news.slice(0, 3);
+const pubs = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year).slice(0, 3);
+const areas = (await getCollection('areas')).sort((a, b) => a.data.order - b.data.order);
+const people = await getCollection('people');
+const current = people.filter((p) => !p.data.alumni && p.data.group !== 'advisor');
+const order = ['leadership', 'researcher', 'engineer', 'postdoc', 'student'];
+const team = current.sort((a, b) => order.indexOf(a.data.group) - order.indexOf(b.data.group) || a.data.order - b.data.order).slice(0, 6);
+const allPubs = await getCollection('publications');
+const tools = await getCollection('tools');
+const projects = await getCollection('projects');
+const stats = [
+  [current.length, 'Researchers & engineers'],
+  [allPubs.length, 'Publications'],
+  [tools.length, 'Open-source tools & datasets'],
+  [projects.filter((p) => p.data.status === 'Active').length, 'Active projects'],
+];
+---
+<Base>
+  <section class="hero">
+    <svg class="hero-grid" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs><pattern id="g" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#1E4468" stroke-width="1"/></pattern></defs>
+      <rect width="1200" height="600" fill="url(#g)"/>
+      <g stroke="#2A5B86" stroke-width="1.2" fill="none" opacity=".8"><path d="M720 96 L864 192 L1008 144 L1104 288 L960 384 L864 192"/><path d="M960 384 L816 480 L720 336 L864 192"/></g>
+      <g fill="#4C83B8"><circle cx="720" cy="96" r="4"/><circle cx="1008" cy="144" r="4"/><circle cx="1104" cy="288" r="4"/><circle cx="816" cy="480" r="4"/><circle cx="720" cy="336" r="4"/><circle cx="960" cy="384" r="5"/></g>
+      <circle cx="864" cy="192" r="6" fill="#C8102E"/>
+    </svg>
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow">{SITE.parentOrg}</span>
+        <h1>Building cyber defences that <em>think, adapt</em> and act on their own.</h1>
+        <p class="lead">We research autonomous cyber systems: AI agents that detect, reason about and respond to threats at machine speed. We make sure they are safe, reliable and accountable.</p>
+        <div class="cta">
+          <a class="btn btn-red" href={url('/research/')}><span class="arrow">Explore our research</span></a>
+          <a class="btn btn-ghost" href={url('/publications/')}>Latest publications</a>
+        </div>
+      </div>
+      <div class="terminal" aria-hidden="true">
+        <div class="terminal-bar"><i></i><i></i><i></i></div>
+<pre><span class="k">agent</span>  ▸ observing network segment 10.4.0.0/16
+<span class="k">agent</span>  ▸ anomaly score 0.93: lateral movement
+<span class="k">agent</span>  ▸ hypothesis: credential reuse on host-17
+<span class="k">policy</span> ▸ action <span class="r">isolate(host-17)</span> requires review
+<span class="k">human</span>  ▸ approved
+<span class="ok">✓ contained in 4.2s · audit log signed</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats">
+    <div class="wrap">
+      {stats.map(([n, label]) => <div class="stat"><b>{n}</b><span>{label}</span></div>)}
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Featured work</span><h2>What we're working on</h2></div>
+        <a class="link" href={url('/news/')}><span class="arrow">All news &amp; blog</span></a>
+      </div>
+      <div class="featured">
+        {featured.map((post, i) => <NewsCard post={post} large={i === 0} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap mv">
+      <div>
+        <span class="eyebrow">Who we are</span>
+        <h2 style="margin:8px 0 36px">Mission &amp; vision</h2>
+        <div class="mv-block"><span class="eyebrow">Mission</span>
+          <p>To advance the science of autonomous cyber systems and give Canada and its partners trusted, open tools to defend digital infrastructure.</p></div>
+        <div class="mv-block"><span class="eyebrow">Vision</span>
+          <p>A world where autonomous cyber defence is safe, transparent and accountable, and where it strengthens human operators rather than replacing them.</p></div>
+        <a class="link" href={url('/about/')} style="display:inline-block;margin-top:32px"><span class="arrow">More about us</span></a>
+      </div>
+      <div class="values">
+        <div class="value"><h3>Rigour</h3><p>Reproducible methods, open benchmarks, and peer-reviewed results.</p></div>
+        <div class="value"><h3>Openness</h3><p>We release code, data and findings so others can build on them.</p></div>
+        <div class="value"><h3>Responsibility</h3><p>Human oversight and safety are built into every system we design.</p></div>
+        <div class="value"><h3>Collaboration</h3><p>We work with academia, industry and government, in Canada and internationally.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">Research portfolio</span><h2>Our research areas</h2><p>Four connected programmes, each with active projects, open tools and publications.</p></div>
+        <a class="link" href={url('/research/projects/')}><span class="arrow">View all projects</span></a>
+      </div>
+      <div class="areas">
+        {areas.map((a) => (
+          <a class="area" href={url(`/research/areas/${a.id}/`)}>
+            <div class="icon-box"><Icon name={a.data.icon} /></div>
+            <span class="num">{String(a.data.order).padStart(2, '0')}</span>
+            <h3>{a.data.title}</h3>
+            <p>{a.data.summary}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap latest">
+      <div>
+        <div class="latest-head"><h3>Latest publications</h3><a class="link" href={url('/publications/')}><span class="arrow">All</span></a></div>
+        <ul class="list">
+          {pubs.map((p) => (
+            <li><a class="item" href={url(`/publications/#${p.id}`)}>
+              <div class="row"><span class="pill">{p.data.type}</span><span class="pill">{p.data.year}</span></div>
+              <h4>{p.data.title}</h4>
+              <div class="sub">{p.data.authors.join(', ')} · {p.data.venue}</div>
+            </a></li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <div class="latest-head"><h3>News &amp; blog</h3><a class="link" href={url('/news/')}><span class="arrow">All</span></a></div>
+        <ul class="list">
+          {latestNews.map((n) => (
+            <li><a class="item" href={url(`/news/${n.id}/`)}>
+              <div class="row"><span class="pill">{n.data.type}</span><span class="pill">{formatDate(n.data.date, { year: 'numeric', month: 'short' })}</span></div>
+              <h4>{n.data.title}</h4>
+              <div class="sub">{n.data.summary}</div>
+            </a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head">
+        <div><span class="eyebrow">People</span><h2>Meet the team</h2><p>Researchers, engineers, fellows and students, plus alumni who have gone on to academia, industry and government.</p></div>
+        <a class="link" href={url('/people/')}><span class="arrow">Members &amp; alumni</span></a>
+      </div>
+      <div class="people home-people">
+        {team.map((p) => <PersonCard person={p} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" style="padding:64px 0">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:24px"><span class="eyebrow">Partners &amp; collaborators</span><a class="link" href={url('/about/#partners')}><span class="arrow">Our partners</span></a></div>
+      <div class="partners">
+        {['University partner', 'Industry partner', 'Government partner', 'Research network', 'International partner'].map((p) => <div class="partner">{p}</div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="join">
+    <div class="wrap join-inner">
+      <div>
+        <span class="eyebrow" style="color:#FF7A8C">Get involved</span>
+        <h2 style="margin-top:8px">Help shape the future of autonomous cyber defence</h2>
+        <p>We're looking for researchers, engineers, students and partners who want to build trustworthy autonomous systems.</p>
+        <ul class="join-links">
+          <li><a href={url('/get-involved/#positions')}>Open positions <span>→</span></a></li>
+          <li><a href={url('/get-involved/#students')}>Student &amp; fellowship programmes <span>→</span></a></li>
+          <li><a href={url('/get-involved/#collaborate')}>Research collaborations <span>→</span></a></li>
+        </ul>
+      </div>
+      <ContactForm compact />
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero{background:var(--navy-800);color:#fff;position:relative;overflow:hidden;padding:0}
+  .hero-inner{position:relative;padding-top:96px;padding-bottom:104px;display:grid;grid-template-columns:1.25fr 1fr;gap:48px;align-items:center}
+  h1{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:600;margin:16px 0 20px}
+  h1 em{font-style:normal;color:#FF6B7F}
+  .hero .eyebrow{color:#FF7A8C}
+  .lead{font-size:1.15rem;color:var(--on-dark);max-width:560px;opacity:.9}
+  .cta{display:flex;gap:12px;margin-top:32px;flex-wrap:wrap}
+  .terminal{background:var(--navy-900);border:1px solid rgba(255,255,255,.1);border-radius:var(--radius);font-family:var(--mono);font-size:.82rem;color:var(--on-dark-muted);box-shadow:0 30px 60px rgba(0,0,0,.35);min-width:0}
+  .terminal-bar{display:flex;gap:6px;padding:12px 14px;border-bottom:1px solid rgba(255,255,255,.08)}
+  .terminal-bar i{width:10px;height:10px;border-radius:50%;background:#2C4560}
+  .terminal-bar i:first-child{background:var(--red)}
+  .terminal pre{padding:18px 20px;white-space:pre-wrap;line-height:1.75;font-family:inherit}
+  .k{color:#7FB3E6}.ok{color:#6FD3A4}.r{color:#FF6B7F}
+  @media (max-width:860px){.hero-inner{grid-template-columns:1fr;padding-top:56px;padding-bottom:64px}}
+
+  .stats{background:var(--navy-900);color:#fff}
+  .stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-top:28px;padding-bottom:28px}
+  .stat b{display:block;font-size:1.9rem;font-weight:600}
+  .stat span{font-size:.85rem;color:var(--on-dark-muted)}
+  @media (max-width:700px){.stats .wrap{grid-template-columns:repeat(2,1fr)}}
+
+  .featured{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:24px}
+  @media (max-width:960px){.featured{grid-template-columns:1fr 1fr}.featured > :global(:first-child){grid-column:1/-1}}
+  @media (max-width:620px){.featured{grid-template-columns:1fr}}
+
+  .mv{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .mv-block{border-left:3px solid var(--red);padding-left:28px}
+  .mv-block + .mv-block{margin-top:40px}
+  .mv-block p{font-size:1.2rem;margin-top:10px}
+  .values{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .value{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+  .value p{color:var(--muted);font-size:.92rem;margin-top:6px}
+  @media (max-width:860px){.mv{grid-template-columns:1fr;gap:40px}}
+  @media (max-width:520px){.values{grid-template-columns:1fr}}
+
+  .areas{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+  .area{background:var(--surface);padding:32px 28px;text-decoration:none;display:flex;flex-direction:column;gap:12px;transition:.15s}
+  .area:hover{background:var(--bg-alt)}
+  .area:hover h3{color:var(--red-text)}
+  .num{font-family:var(--mono);color:var(--red-text);font-size:.85rem}
+  .area p{color:var(--muted);font-size:.93rem}
+  @media (max-width:960px){.areas{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.areas{grid-template-columns:1fr}}
+
+  .latest{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+  .latest-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px}
+  @media (max-width:860px){.latest{grid-template-columns:1fr;gap:48px}}
+
+  .home-people{grid-template-columns:repeat(6,1fr)}
+  @media (max-width:860px){.home-people{grid-template-columns:repeat(3,1fr)}}
+  @media (max-width:480px){.home-people{grid-template-columns:repeat(2,1fr)}}
+
+  .partners{display:grid;grid-template-columns:repeat(5,1fr);gap:16px}
+  .partner{height:84px;border:1px dashed var(--line);border-radius:var(--radius);display:grid;place-items:center;color:var(--muted);font-family:var(--mono);font-size:.8rem;text-align:center;padding:8px}
+  @media (max-width:760px){.partners{grid-template-columns:repeat(2,1fr)}}
+
+  .join{background:var(--navy-800);color:#fff}
+  .join-inner{display:grid;grid-template-columns:1fr 1fr;gap:64px}
+  .join-inner > div > p{color:var(--on-dark-muted);margin-top:14px}
+  .join-links{list-style:none;margin-top:28px;display:grid;gap:10px}
+  .join-links a{display:flex;justify-content:space-between;padding:16px 20px;border:1px solid rgba(255,255,255,.14);border-radius:8px;text-decoration:none;font-weight:500}
+  .join-links a:hover{border-color:#fff}
+  @media (max-width:860px){.join-inner{grid-template-columns:1fr;gap:40px}}
+</style>

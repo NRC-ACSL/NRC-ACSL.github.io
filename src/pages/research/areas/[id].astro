@@ -1,0 +1,70 @@
+---
+import Base from '../../../layouts/Base.astro';
+import PageHero from '../../../components/PageHero.astro';
+import PubItem from '../../../components/PubItem.astro';
+import NewsCard from '../../../components/NewsCard.astro';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { url } from '../../../utils';
+
+export async function getStaticPaths() {
+  const areas = await getCollection('areas');
+  return areas.map((area) => ({ params: { id: area.id }, props: { area } }));
+}
+const { area } = Astro.props as { area: CollectionEntry<'areas'> };
+const projects = (await getCollection('projects')).filter((p) => p.data.area.id === area.id);
+const pubs = (await getCollection('publications')).filter((p) => p.data.area?.id === area.id).sort((a, b) => b.data.year - a.data.year);
+const news = (await getCollection('news')).filter((n) => n.data.area?.id === area.id).sort((a, b) => +b.data.date - +a.data.date).slice(0, 3);
+const tools = (await getCollection('tools')).filter((t) => t.data.area?.id === area.id);
+---
+<Base title={area.data.title} description={area.data.summary}>
+  <PageHero eyebrow={`Research area ${String(area.data.order).padStart(2, '0')}`} title={area.data.title} intro={area.data.description} crumbs={[{ label: 'Research', href: '/research/' }, { label: area.data.title, href: `/research/areas/${area.id}/` }]} />
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Projects</span><h2>Projects in this area</h2></div></div>
+      {projects.length ? (
+        <div class="grid grid-3">
+          {projects.map((p) => (
+            <a class="card" href={url(`/research/projects/${p.id}/`)}><div class="card-body">
+              <span class={`pill status-${p.data.status}`} style="align-self:flex-start">{p.data.status}</span>
+              <h3>{p.data.title}</h3><p>{p.data.summary}</p>
+              <span class="meta">{p.data.start}{p.data.end ? `–${p.data.end}` : '–present'}</span>
+            </div></a>
+          ))}
+        </div>
+      ) : <p class="muted">No projects listed yet.</p>}
+    </div>
+  </section>
+
+  {tools.length > 0 && (
+    <section class="alt">
+      <div class="wrap">
+        <div class="sec-head"><div><span class="eyebrow">Open source</span><h2>Tools &amp; datasets</h2></div><a class="link" href={url('/research/tools/')}><span class="arrow">All tools</span></a></div>
+        <div class="grid grid-3">
+          {tools.map((t) => (
+            <a class="card" href={t.data.repo ?? url('/research/tools/')} target="_blank" rel="noopener"><div class="card-body">
+              <span class="tag">{t.data.kind}</span><h3>{t.data.name}</h3><p>{t.data.summary}</p>
+            </div></a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  <section>
+    <div class="wrap">
+      <div class="sec-head"><div><span class="eyebrow">Publications</span><h2>Selected publications</h2></div><a class="link" href={url(`/publications/?area=${area.id}`)}><span class="arrow">Browse all</span></a></div>
+      {pubs.length ? <ul class="list">{pubs.map((p) => <PubItem pub={p} />)}</ul> : <p class="muted">No publications yet.</p>}
+    </div>
+  </section>
+
+  {news.length > 0 && (
+    <section class="alt">
+      <div class="wrap">
+        <div class="sec-head"><div><span class="eyebrow">Related</span><h2>News &amp; blog</h2></div></div>
+        <div class="grid grid-3">{news.map((n) => <NewsCard post={n} />)}</div>
+      </div>
+    </section>
+  )}
+</Base>
+<style>.muted{color:var(--muted)}</style>
