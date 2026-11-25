@@ -17,6 +17,7 @@ const search = [p.title, p.authors.join(' '), p.venue, p.year, p.type, areaTitle
     <div class="row">
       <span class="pill">{p.type}</span><span class="pill">{p.year}</span>
       {areaTitle && <span class="pill">{areaTitle}</span>}
+      {typeof p.citations === 'number' && p.citations > 0 && <span class="pill">Cited by {p.citations}</span>}
       {p.award && <span class="tag">🏆 {p.award}</span>}
     </div>
     <h4>{p.title}</h4>
@@ -25,6 +26,7 @@ const search = [p.title, p.authors.join(' '), p.venue, p.year, p.type, areaTitle
       {p.pdf && <a class="btn btn-outline btn-sm" href={p.pdf} target="_blank" rel="noopener"><Icon name="doc" size={15} />PDF</a>}
       {p.doi && <a class="btn btn-outline btn-sm" href={`https://doi.org/${p.doi}`} target="_blank" rel="noopener"><Icon name="link" size={15} />DOI</a>}
       {p.code && <a class="btn btn-outline btn-sm" href={p.code} target="_blank" rel="noopener"><Icon name="code" size={15} />Code</a>}
+      {p.link && !p.pdf && !p.doi && <a class="btn btn-outline btn-sm" href={p.link} target="_blank" rel="noopener"><Icon name="link" size={15} />Link</a>}
       <button class="btn btn-outline btn-sm bib-btn" type="button" data-bib={bib}>Copy BibTeX</button>
     </div>
   </div>

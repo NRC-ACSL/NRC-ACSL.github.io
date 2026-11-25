@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  # Allow other workflows (e.g. the daily publications refresh) to invoke a deploy,
+  # since a commit pushed with GITHUB_TOKEN does not re-trigger the push event.
+  workflow_call:
 
 permissions:
   contents: read
@@ -20,6 +23,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Always build the branch tip. Matters when this workflow is called
+          # right after an automated commit (publications refresh), where the
+          # triggering SHA would otherwise be one commit behind.
+          ref: ${{ github.ref_name }}
 
       - name: Set up Node
         uses: actions/setup-node@v4

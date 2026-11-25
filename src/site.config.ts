@@ -18,11 +18,15 @@ export const SITE = {
 // author/lead/team/publication references resolve, but hidden from people listings.
 export const OWNER = 'shahrear-iqbal';
 
+// Google Scholar author id (the `user=` value in the profile URL).
+// Used by scripts/fetch-publications.mjs to auto-populate publications.yaml.
+export const SCHOLAR_AUTHOR_ID = 'cXS5b4sAAAAJ';
+
 export const NAV = [
   { label: 'About', href: '/about/' },
   { label: 'Research', href: '/research/' },
   { label: 'Publications', href: '/publications/' },
   { label: 'Blog', href: '/news/' },
   { label: 'People', href: '/people/' },
-  { label: 'Join my group', href: '/get-involved/' },
+  { label: 'Collaborate', href: '/get-involved/' },
 ];

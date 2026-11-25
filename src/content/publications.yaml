@@ -1,83 +1,567 @@
-# Add a new publication by copying a block. "id" must be unique.
-# people: team members (file names in src/content/people) so it appears on their profile
-# type: Conference | Journal | Preprint | Workshop | Report | Thesis
-- id: verifiable-policies-2026
-  title: Towards verifiable policies for autonomous network defence agents
-  authors: [A. Author, B. Author, C. Author]
-  people: [alex-smith, jane-doe]
-  venue: IEEE Security & Privacy Workshops
-  year: 2026
-  type: Workshop
-  area: autonomous-defence
-  pdf: https://arxiv.org/
-  code: https://github.com/nrc-acsl
-- id: cybergym-2026
-  title: "CyberGym-CA: a reproducible environment for evaluating defensive agents"
-  authors: [D. Author, A. Author]
-  people: [sam-chen, marc-tremblay]
-  venue: Computers & Security
+# AUTO-GENERATED from Google Scholar via scripts/fetch-publications.mjs
+# Do not edit by hand — changes are overwritten on the next refresh.
+# Last generated: 2026-11-25T19:41:45.600Z
+
+- id: automated-threat-defense-a-comprehensive-survey-on-red-and-b-2026
+  title: "Automated threat defense: a comprehensive survey on red and blue team automation using machine learning techniques: EC Pinto Neto et al."
+  authors: ["ECP Neto", "S Iqbal", "S Buffett", "M Sultana", "A Taylor"]
+  venue: "International Journal of Information Security 25 (4), 128, 2026"
   year: 2026
   type: Journal
-  area: evaluation
-  doi: 10.0000/placeholder
-  award: Best Paper Award
-- id: deception-robustness-2026
-  title: Measuring deception robustness in LLM-based security assistants
-  authors: [E. Author, F. Author]
-  people: [priya-lal]
-  venue: arXiv preprint
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:f2IySw72cVMC"
+
+- id: can-llm-agents-replace-reinforcement-learning-agents-in-cybe-2026
+  title: "Can LLM Agents Replace Reinforcement Learning Agents in Cyber Defence Automation: A Case Study Using the DARPA CAGE-2 Challenge"
+  authors: ["A Diganto", "S Lohrasbi", "ECP Neto", "S Iqbal"]
+  venue: "2026 International Conference on Smart Applications, Communications and …, 2026"
+  year: 2026
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:bFI3QPDXJZMC"
+
+- id: cyber-task-automation-with-knowledge-infused-reinforcement-l-2026
+  title: "Cyber Task Automation With Knowledge-Infused Reinforcement Learning and LLM-Guided Policies"
+  authors: ["MS Towhid", "S Iqbal", "ECP Neto", "N Shahriar", "S Buffett", "M Sultana", "A Taylor"]
+  venue: "IEEE Transactions on Network Science and Engineering 13, 10656-10673, 2026"
+  year: 2026
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:b0M2c_1WBrUC"
+
+- id: domain-knowledge-management-for-automated-threat-defense-met-2026
+  title: "Domain Knowledge Management for Automated Threat Defense: Methods, Challenges, and Opportunities"
+  authors: ["MM Islam", "ECP Neto", "S Iqbal", "S Buffett", "M Sultana", "A Taylor"]
+  venue: "SN Computer Science 7 (6), 623, 2026"
+  year: 2026
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:D03iK_w7-QYC"
+
+- id: from-static-tasks-to-dynamic-reasoning-a-characterization-fr-2026
+  title: "From static tasks to dynamic reasoning: a characterization framework and study of large language models in next-generation cybersecurity automation"
+  authors: ["H Yu", "S Iqbal", "ECP Neto", "S Buffett", "A Taylor"]
+  venue: "International Journal of Information Security 25 (5), 149, 2026"
+  year: 2026
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:abG-DnoFyZgC"
+  citations: 2
+
+- id: roast-risk-aware-outlier-exposure-for-adversarial-selective--2026
+  title: "ROAST: Risk-aware Outlier-exposure for Adversarial Selective Training of Anomaly Detectors Against Evasion Attacks"
+  authors: ["M Elnawawy", "G Mitra", "S Iqbal", "K Pattabiraman"]
+  venue: "arXiv preprint arXiv:2603.26093, 2026"
   year: 2026
   type: Preprint
-  area: adversarial-ai
-  pdf: https://arxiv.org/
-- id: oversight-2025
-  title: Human oversight patterns for autonomous incident response
-  authors: [G. Author, A. Author, H. Author]
-  people: [rina-kaur, jane-doe]
-  venue: ACM CHI Conference on Human Factors in Computing Systems
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:yD5IFk8b50cC"
+
+- id: samd-a-tool-for-identifying-false-data-injection-scenarios-i-2026
+  title: "SAMD: A Tool for Identifying False Data Injection Scenarios in AI/ML-enabled Medical Devices"
+  authors: ["M Hallajiyan", "X Ge", "AP Dharmalingam", "G Mitra", "S Iqbal", "H Alemzadeh", "..."]
+  venue: "arXiv preprint arXiv:2605.29210, 2026"
+  year: 2026
+  type: Preprint
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:a0OBvERweLwC"
+  citations: 1
+
+- id: an-efficient-self-attention-based-1d-cnn-lstm-network-for-io-2025
+  title: "An efficient self attention-based 1D-CNN-LSTM network for IoT attack detection and identification using network traffic"
+  authors: ["T Sasi", "AH Lashkari", "R Lu", "P Xiong", "S Iqbal"]
+  venue: "Journal of Information and Intelligence 3 (5), 375-400, 2025"
+  year: 2025
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:M3NEmzRMIkIC"
+  citations: 99
+
+- id: an-exploratory-study-on-domain-knowledge-infusion-in-deep-le-2025
+  title: "An exploratory study on domain knowledge infusion in deep learning for automated threat defense: S. Khanzadeh et al."
+  authors: ["S Khanzadeh", "ECP Neto", "S Iqbal", "M Alalfi", "S Buffett"]
+  venue: "International Journal of Information Security 24 (1), 71, 2025"
+  year: 2025
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:YFjsv_pBGBYC"
+  citations: 9
+
+- id: autonomous-multi-agent-cyber-defense-a-novel-approach-using--2025
+  title: "Autonomous Multi-agent Cyber Defense: A Novel Approach Using Reinforcement Learning with Hierarchical LLM Critics"
+  authors: ["H Ahmed", "S Iqbal", "ECP Neto", "S Buffett", "M Sultana", "A Taylor"]
+  venue: "2025 Cyber Awareness and Research Symposium (CARS), 1-5, 2025"
   year: 2025
   type: Conference
-  area: human-machine-teaming
-  pdf: https://arxiv.org/
-- id: rl-defence-2025
-  title: Reinforcement learning for adaptive network defence under partial observability
-  authors: [B. Author, C. Author]
-  people: [alex-smith, david-alum]
-  venue: NeurIPS Workshop on Machine Learning for Security
-  year: 2025
-  type: Workshop
-  area: autonomous-defence
-- id: llm-pentest-2025
-  title: How capable are LLM agents at offensive security? A systematic evaluation
-  authors: [F. Author, D. Author, E. Author]
-  people: [priya-lal, luc-gagnon]
-  venue: USENIX Security Symposium
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:ZHo1McVdvXMC"
+  citations: 6
+
+- id: cagaid-context-aware-gait-anomaly-based-intrusion-detection-2025
+  title: "CAGAID: Context-Aware Gait Anomaly-Based Intrusion Detection"
+  authors: ["Y Yamout", "S Iqbal", "M Zulkernine"]
+  venue: "International Conference on Risks and Security of Internet and Systems, 119-135, 2025"
   year: 2025
   type: Conference
-  area: adversarial-ai
-  pdf: https://arxiv.org/
-  code: https://github.com/nrc-acsl
-- id: tech-report-2025
-  title: State of autonomous cyber defence in Canada, 2025
-  authors: [NRC Autonomous Cyber Research]
-  venue: Technical report
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:pyW8ca7W8N0C"
+  citations: 1
+
+- id: cloudapt-a-provenance-based-dataset-for-evaluating-apt-count-2025
+  title: "CloudAPT: A Provenance-Based Dataset for Evaluating APT Countermeasures in Cloud Environments"
+  authors: ["MA Haque", "ECP Neto", "T Pasquier", "S Iqbal"]
+  venue: "2025 International Symposium on Networks, Computers and Communications …, 2025"
   year: 2025
-  type: Report
-  pdf: https://example.org/
-- id: benchmark-survey-2024
-  title: A survey of benchmarks for autonomous cyber operations
-  authors: [C. Author, A. Author]
-  people: [sam-chen, alex-smith]
-  venue: ACM Computing Surveys
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:SeFeTyx0c_EC"
+
+- id: correction-an-exploratory-study-on-domain-knowledge-infusion-2025
+  title: "Correction: An exploratory study on domain knowledge infusion in deep learning for automated threat defense"
+  authors: ["S Khanzadeh", "ECP Neto", "S Iqbal", "M Alalfi", "S Buffett"]
+  venue: "International Journal of Information Security 24 (3), 118, 2025"
+  year: 2025
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:u_35RYKgDlwC"
+
+- id: csa-sacs-a-framework-for-comparative-security-assessment-in--2025
+  title: "CSA-SACS: A Framework for Comparative Security Assessment in Smart Aging Care Systems"
+  authors: ["N Chakraborty", "S Iqbal", "M Zulkernine"]
+  venue: "2025 IEEE 49th Annual Computers, Software, and Applications Conference …, 2025"
+  year: 2025
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:2P1L_qKh6hAC"
+
+- id: cyber-threat-mitigation-with-knowledge-infused-reinforcement-2025
+  title: "Cyber threat mitigation with knowledge-infused reinforcement learning and LLM-guided policies"
+  authors: ["MS Towhid", "S Iqbal", "ECP Neto", "N Shahriar", "S Buffett", "M Sultana", "A Taylor"]
+  venue: "2025 22nd Annual International Conference on Privacy, Security, and Trust …, 2025"
+  year: 2025
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:ldfaerwXgEUC"
+  citations: 5
+
+- id: deep-learning-for-intrusion-detection-in-emerging-technologi-2025
+  title: "Deep learning for intrusion detection in emerging technologies: a comprehensive survey and new perspectives"
+  authors: ["ECP Neto", "S Iqbal", "S Buffett", "M Sultana", "A Taylor"]
+  venue: "Artificial Intelligence Review 58 (11), 340, 2025"
+  year: 2025
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:70eg2SAEIzsC"
+  citations: 122
+
+- id: dynamic-decision-support-framework-for-smart-home-security-2025
+  title: "Dynamic Decision Support Framework for Smart Home Security"
+  authors: ["Y Yamout", "S Iqbal", "M Zulkernine"]
+  venue: "2025 IEEE Conference on Dependable and Secure Computing (DSC), 1-6, 2025"
+  year: 2025
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:M05iB0D1s5AC"
+  citations: 1
+
+- id: integrating-auxiliary-knowledge-into-machine-learning-to-imp-2025
+  title: "Integrating Auxiliary Knowledge into Machine Learning to Improve the Detection of Cyberattacks"
+  authors: ["S Iqbal", "S Khanzadeh", "ECP Neto", "S Buffett", "M Sultana", "A Taylor"]
+  venue: "2025 International Symposium on Networks, Computers and Communications …, 2025"
+  year: 2025
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:HoB7MX3m0LUC"
+
+- id: learning-from-the-good-ones-risk-profiling-based-defenses-ag-2025
+  title: "Learning from the good ones: Risk profiling-based defenses against evasion attacks on dnns"
+  authors: ["M Elnawawy", "G Mitra", "S Iqbal", "K Pattabiraman"]
+  venue: "2025 55th Annual IEEE/IFIP International Conference on Dependable Systems …, 2025"
+  year: 2025
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:lSLTfruPkqcC"
+
+- id: lidit-low-latency-intrusion-detection-in-iomt-devices-using--2025
+  title: "LIDIT: Low-latency intrusion detection in IoMT devices using TinyML"
+  authors: ["ST Anuva", "S Iqbal", "M Zulkernine"]
+  venue: "GLOBECOM 2025-2025 IEEE Global Communications Conference, 6093-6098, 2025"
+  year: 2025
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:cFHS6HbyZ2cC"
+  citations: 4
+
+- id: orthrus-achieving-high-quality-of-attribution-in-provenance--2025
+  title: "ORTHRUS: Achieving High Quality of Attribution in Provenance-based Intrusion Detection Systems"
+  authors: ["B Jiang", "T Bilot234", "N El Madhoun", "K Al Agha", "A Zouaoui", "S Iqbal", "X Han", "..."]
+  venue: "The 34th USENIX Security Symposium, 2025"
+  year: 2025
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:GnPB-g6toBAC"
+  citations: 117
+
+- id: building-secure-software-for-smart-aging-care-systems-an-agi-2024
+  title: "Building secure software for smart aging care systems: An agile approach"
+  authors: ["N Chakraborty", "S Iqbal", "M Zulkernine"]
+  venue: "2024 IEEE 24th International Conference on Software Quality, Reliability and …, 2024"
+  year: 2024
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:blknAaTinKkC"
+  citations: 3
+
+- id: cicapt-iiot-a-provenance-based-apt-attack-dataset-for-iiot-e-2024
+  title: "CICAPT-IIOT: A provenance-based APT attack dataset for IIoT environment"
+  authors: ["E Ghiasvand", "S Ray", "S Iqbal", "S Dadkhah", "AA Ghorbani"]
+  venue: "arXiv preprint arXiv:2407.11278, 2024"
+  year: 2024
+  type: Preprint
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:k_IJM867U9cC"
+  citations: 64
+
+- id: ciciov2024-advancing-realistic-ids-approaches-against-dos-an-2024
+  title: "CICIoV2024: Advancing realistic IDS approaches against DoS and spoofing attack in IoV CAN bus"
+  authors: ["ECP Neto", "H Taslimasa", "S Dadkhah", "S Iqbal", "P Xiong", "T Rahman", "..."]
+  venue: "Internet of Things 26, 101209, 2024"
   year: 2024
   type: Journal
-  area: evaluation
-  doi: 10.0000/placeholder
-- id: thesis-2024
-  title: Explainable decision-making for cyber defence agents
-  authors: [J. Former]
-  people: [john-former]
-  venue: PhD thesis, University of Placeholder
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:isC4tDSrTZIC"
+  citations: 246
+
+- id: cloudapt-a-benchmark-dataset-to-evaluate-apt-countermeasures-2024
+  title: "Cloudapt: a benchmark dataset to evaluate apt countermeasures in cloud environments"
+  authors: ["MA Haque", "EC Pinto Neto", "T Pasquier", "S Iqbal"]
+  venue: "National Research Council Canada, 66, 2024"
   year: 2024
-  type: Thesis
-  area: human-machine-teaming
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:NhqRSupF_l8C"
+
+- id: gait-based-authentication-in-smart-aging-care-systems-2024
+  title: "Gait-based Authentication in Smart Aging Care Systems"
+  authors: ["Y Yamout", "S Iqbal", "N Chakraborty", "M Zulkernine"]
+  venue: "2024 IEEE Canadian Conference on Electrical and Computer Engineering (CCECE …, 2024"
+  year: 2024
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:JV2RwH3_ST0C"
+  citations: 3
+
+- id: gait4auth-enhancing-identification-and-security-in-gait-base-2024
+  title: "Gait4Auth: Enhancing Identification and Security in Gait-Based Authentication"
+  authors: ["Y Yamout", "S Iqbal", "N Chakraborty", "M Zulkernine"]
+  venue: "20th EAI International Conference on Security and Privacy in Communication …, 2024"
+  year: 2024
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:NaGl4SEjCO4C"
+  citations: 2
+
+- id: megr-apt-a-memory-efficient-apt-hunting-system-based-on-atta-2024
+  title: "Megr-apt: A memory-efficient apt hunting system based on attack representation learning"
+  authors: ["A Aly", "S Iqbal", "A Youssef", "E Mansour"]
+  venue: "IEEE Transactions on Information Forensics and Security 19, 5257-5271, 2024"
+  year: 2024
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:TFP_iSt0sucC"
+  citations: 61
+
+- id: pulse-to-pair-heartbeat-based-authentication-of-iot-devices--2024
+  title: "Pulse-to-Pair: Heartbeat-based Authentication of IoT Devices for Elderly Care"
+  authors: ["TS Yeasar", "S Iqbal", "M Zulkernine"]
+  venue: "20th EAI International Conference on Security and Privacy in Communication …, 2024"
+  year: 2024
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:J_g5lzvAfSwC"
+
+- id: resilience-against-apts-a-provenance-based-iiot-dataset-for--2024
+  title: "Resilience Against APTs: A Provenance-based IIoT Dataset for Cybersecurity Research"
+  authors: ["E Ghiasvand", "S Ray", "S Iqbal", "S Dadkhah", "AA Ghorbani"]
+  venue: "21st EAI International Conference on Mobile and Ubiquitous Systems …, 2024"
+  year: 2024
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:RGFaLdJalmkC"
+  citations: 11
+
+- id: sam-foreseeing-inference-time-false-data-injection-attacks-o-2024
+  title: "SAM: Foreseeing Inference-Time False Data Injection Attacks on ML-enabled Medical Devices"
+  authors: ["M Hallajiyan", "AP Dharmalingam", "G Mitra", "H Alemzadeh", "S Iqbal", "..."]
+  venue: "Proceedings of the 2024 ACM CCS Workshop on Cybersecurity in Healthcare …, 2024"
+  year: 2024
+  type: Workshop
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:NMxIlDl6LWMC"
+  citations: 10
+
+- id: systematically-assessing-the-security-risks-of-aiml-enabled--2024
+  title: "Systematically Assessing the Security Risks of AI/ML-enabled Connected Healthcare Systems"
+  authors: ["M Elnawawy", "M Hallajiyan", "G Mitra", "S Iqbal", "K Pattabiraman"]
+  venue: "2024 IEEE/ACM Conference on Connected Health: Applications, Systems and …, 2024"
+  year: 2024
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:mB3voiENLucC"
+  citations: 24
+
+- id: systems-theoretic-and-data-driven-security-analysis-in-ml-en-2024
+  title: "Systems-theoretic and data-driven security analysis in ml-enabled medical devices"
+  authors: ["G Mitra", "M Hallajiyan", "I Kim", "AP Dharmalingam", "M Elnawawy", "S Iqbal", "..."]
+  venue: "International Conference on Cybersecurity in Healthcare, 232-263, 2024"
+  year: 2024
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:35N4QoGY0k4C"
+  citations: 5
+
+- id: a-comprehensive-survey-on-iot-attacks-taxonomy-detection-mec-2023
+  title: "A comprehensive survey on IoT attacks: Taxonomy, detection mechanisms and challenges"
+  authors: ["T Sasi", "AH Lashkari", "R Lu", "P Xiong", "S Iqbal"]
+  venue: "Journal of Information and intelligence 2 (6), 455-513, 2023"
+  year: 2023
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:hFOr9nPyWt4C"
+  citations: 338
+
+- id: beyond-smart-homes-an-in-depth-analysis-of-smart-aging-care--2023
+  title: "Beyond smart homes: An in-depth analysis of smart aging care system security"
+  authors: ["Y Yamout", "TS Yeasar", "S Iqbal", "M Zulkernine"]
+  venue: "ACM Computing Surveys 56 (2), 1-35, 2023"
+  year: 2023
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:L8Ckcad2t8MC"
+  citations: 48
+
+- id: imagefed-practical-privacy-preserving-intrusion-detection-sy-2023
+  title: "ImageFed: Practical privacy preserving intrusion detection system for in-vehicle CAN bus protocol"
+  authors: ["H Taslimasa", "S Dadkhah", "ECP Neto", "P Xiong", "S Iqbal", "S Ray", "..."]
+  venue: "2023 IEEE 9th intl conference on big data security on cloud (BigDataSecurity …, 2023"
+  year: 2023
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:7PzlFSSx8tAC"
+  citations: 29
+
+- id: internet-of-things-iot-security-dataset-evolution-challenges-2023
+  title: "Internet of Things (IoT) security dataset evolution: Challenges and future directions"
+  authors: ["B Kaur", "S Dadkhah", "F Shoeleh", "ECP Neto", "P Xiong", "S Iqbal", "..."]
+  venue: "Internet of Things 22, 100780, 2023"
+  year: 2023
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:QIV2ME_5wuYC"
+  citations: 249
+
+- id: iot-malware-an-attribute-based-taxonomy-detection-mechanisms-2023
+  title: "IoT malware: An attribute-based taxonomy, detection mechanisms and challenges"
+  authors: ["P Victor", "AH Lashkari", "R Lu", "T Sasi", "P Xiong", "S Iqbal"]
+  venue: "Peer-to-peer Networking and Applications 16 (3), 1380-1431, 2023"
+  year: 2023
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:dhFuZR0502QC"
+  citations: 100
+
+- id: logshield-a-transformer-based-apt-detection-system-leveragin-2023
+  title: "Logshield: A transformer-based apt detection system leveraging self-attention"
+  authors: ["S Afnan", "M Sadia", "S Iqbal", "A Iqbal"]
+  venue: "arXiv preprint arXiv:2311.05733, 2023"
+  year: 2023
+  type: Preprint
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:-f6ydRqryjwC"
+  citations: 13
+
+- id: risk-assessment-in-smart-aging-care-systems-an-elderly-cente-2023
+  title: "Risk assessment in smart aging care systems: an elderly-centered perspective"
+  authors: ["N Chakraborty", "S Iqbal", "M Zulkernine"]
+  venue: "2023 IEEE International Conference on Digital Health (ICDH), 1-12, 2023"
+  year: 2023
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=20&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:hC7cP41nSMkC"
+  citations: 4
+
+- id: anubis-a-provenance-graph-based-framework-for-advanced-persi-2022
+  title: "ANUBIS: a provenance graph-based framework for advanced persistent threat detection"
+  authors: ["MM Anjum", "S Iqbal", "B Hamelin"]
+  venue: "Proceedings of the 37th ACM/SIGAPP Symposium on Applied Computing, 1684-1693, 2022"
+  year: 2022
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:4TOpqqG69KYC"
+  citations: 72
+
+- id: classification-and-analysis-of-adversarial-machine-learning--2022
+  title: "Classification and analysis of adversarial machine learning attacks in iot: a label flipping attack case study"
+  authors: ["M Abrishami", "S Dadkhah", "ECP Neto", "P Xiong", "S Iqbal", "S Ray", "..."]
+  venue: "2022 32nd Conference of Open Innovations Association (FRUCT), 3-14, 2022"
+  year: 2022
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:mVmsd5A6BfQC"
+  citations: 14
+
+- id: label-noise-detection-in-iot-security-based-on-decision-tree-2022
+  title: "Label noise detection in IoT security based on decision tree and active learning"
+  authors: ["M Abrishami", "S Dadkhah", "ECP Neto", "P Xiong", "S Iqbal", "S Ray", "..."]
+  venue: "2022 IEEE 19th International Conference on Smart Communities: Improving …, 2022"
+  year: 2022
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:9ZlFYXVOiuMC"
+  citations: 11
+
+- id: towards-a-robust-and-trustworthy-machine-learning-system-dev-2022
+  title: "Towards a robust and trustworthy machine learning system development: An engineering perspective"
+  authors: ["P Xiong", "S Buffett", "S Iqbal", "P Lamontagne", "M Mamun", "H Molyneaux"]
+  venue: "Journal of Information Security and Applications 65, 103121, 2022"
+  year: 2022
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:qxL8FJ1GzNcC"
+  citations: 57
+
+- id: a-feature-exploration-approach-for-iot-attack-type-classific-2021
+  title: "A feature exploration approach for IoT attack type classification"
+  authors: ["M Erfani", "F Shoeleh", "S Dadkhah", "B Kaur", "P Xiong", "S Iqbal", "S Ray", "..."]
+  venue: "2021 IEEE Intl Conf on Dependable, Autonomic and Secure Computing, Intl Conf …, 2021"
+  year: 2021
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:aqlVkmm33-oC"
+  citations: 24
+
+- id: a-framework-for-secure-logging-in-precision-healthcare-cloud-2021
+  title: "A Framework for Secure Logging in Precision Healthcare Cloud-based Services"
+  authors: ["P Moghaddam", "S Iqbal", "I Traore"]
+  venue: "2021 IEEE International Conference on Digital Health (ICDH), 212-214, 2021"
+  year: 2021
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:_kc_bZDykSQC"
+  citations: 4
+
+- id: a-study-on-uav-operating-system-security-and-future-research-2021
+  title: "A study on UAV operating system security and future research challenges"
+  authors: ["S Iqbal"]
+  venue: "2021 IEEE 11th annual computing and communication workshop and conference …, 2021"
+  year: 2021
+  type: Workshop
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:YOwf2qJgpHMC"
+  citations: 65
+
+- id: analyzing-the-usefulness-of-the-darpa-optc-dataset-in-cyber--2021
+  title: "Analyzing the Usefulness of the DARPA OpTC Dataset in Cyber Threat Detection Research"
+  authors: ["MM Anjum", "S Iqbal", "B Hamelin"]
+  venue: "SACMAT '21: Proceedings of the 26th ACM Symposium on Access Control Models …, 2021"
+  year: 2021
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:Zph67rFs4hoC"
+  citations: 92
+
+- id: verification-based-scheme-to-restrict-iot-attacks-2021
+  title: "Verification based scheme to restrict iot attacks"
+  authors: ["B Kaur", "S Dadkhah", "P Xiong", "S Iqbal", "S Ray", "AA Ghorbani"]
+  venue: "Proceedings of the 2021 IEEE/ACM 8th International Conference on Big Data …, 2021"
+  year: 2021
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:M3ejUd6NZC8C"
+  citations: 4
+
+- id: a-classification-of-attacks-to-in-vehicle-components-ivcs-2020
+  title: "A classification of attacks to In-Vehicle Components (IVCs)"
+  authors: ["J Sun", "S Iqbal", "NS Arabi", "M Zulkernine"]
+  venue: "Vehicular Communications 25, 2020"
+  year: 2020
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:3fE2CSJIrl8C"
+  citations: 37
+
+- id: securing-vehicle-ecu-communications-and-stored-data-2019
+  title: "Securing vehicle ECU communications and stored data"
+  authors: ["MSU Alam", "S Iqbal", "M Zulkernine", "C Liem"]
+  venue: "ICC 2019-2019 IEEE International Conference on Communications (ICC), 1-6, 2019"
+  year: 2019
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:8k81kl-MbHgC"
+  citations: 56
+
+- id: towards-a-security-architecture-for-protecting-connected-veh-2019
+  title: "Towards a Security Architecture for Protecting Connected Vehicles from Malware"
+  authors: ["S Iqbal", "A Haque", "M Zulkernine"]
+  venue: "IEEE Vehicular Technology Conference, 2019"
+  year: 2019
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:5nxA0vEk-isC"
+  citations: 37
+
+- id: an-adaptive-dataset-for-the-evaluation-of-android-malware-de-2018
+  title: "An adaptive dataset for the evaluation of android malware detection techniques"
+  authors: ["O Hreirati", "S Iqbal", "M Zulkernine"]
+  venue: "2018 International Conference on Software Security and Assurance (ICSSA), 62-66, 2018"
+  year: 2018
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:roLk4NBRz8UC"
+  citations: 4
+
+- id: protecting-internet-users-from-becoming-victimized-attackers-2018
+  title: "Protecting Internet users from becoming victimized attackers of click‐fraud"
+  authors: ["MS Iqbal", "M Zulkernine", "F Jaafar", "Y Gu"]
+  venue: "Journal of Software: Evolution and Process 30 (3), e1871, 2018"
+  year: 2018
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:zYLM7Y9cAGgC"
+  citations: 31
+
+- id: securing-web-applications-with-secure-coding-practices-and-i-2018
+  title: "Securing Web Applications with Secure Coding Practices and Integrity Verification"
+  authors: ["A Anis", "M Zulkernine", "S Iqbal", "C Liem", "C Chambers"]
+  venue: "IEEE 16th Intl Conf on Dependable, Autonomic and Secure Computing, 16th Intl …, 2018"
+  year: 2018
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:EUQCXRtRnyEC"
+  citations: 15
+
+- id: spydroid-a-framework-for-employing-multiple-real-time-malwar-2018
+  title: "SpyDroid: A framework for employing multiple real-time malware detectors on Android"
+  authors: ["S Iqbal", "M Zulkernine"]
+  venue: "2018 13th International Conference on Malicious and Unwanted Software …, 2018"
+  year: 2018
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:UebtZRa9Y70C"
+  citations: 26
+
+- id: droid-mood-swing-dms-automatic-security-modes-based-on-conte-2017
+  title: "Droid mood swing (dms): Automatic security modes based on contexts"
+  authors: ["MS Iqbal", "M Zulkernine"]
+  venue: "International Conference on Information Security, 329-347, 2017"
+  year: 2017
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:Tyk-4Ss8FVUC"
+  citations: 5
+
+- id: flamingo-a-framework-for-smartphone-security-context-managem-2017
+  title: "Flamingo: A framework for smartphone security context management"
+  authors: ["MS Iqbal", "M Zulkernine"]
+  venue: "The 32nd ACM Symposium on Applied Computing, 2017"
+  year: 2017
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:IjCSPb-OGe4C"
+  citations: 3
+
+- id: towards-a-security-framework-for-smartphone-operating-system-2017
+  title: "Towards a security framework for smartphone operating systems"
+  authors: ["MS Iqbal"]
+  venue: "Queen's University (Canada), 2017"
+  year: 2017
+  type: Journal
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:W7OEmFMy1HYC"
+  citations: 1
+
+- id: fcfraud-fighting-click-fraud-from-the-user-side-2016
+  title: "FCFraud: Fighting Click-Fraud from the User Side"
+  authors: ["MS Iqbal", "M Zulkernine", "F Jaafar", "Y Gu"]
+  venue: "International Symposium on High Assurance Systems Engineering (HASE), 157-164, 2016"
+  year: 2016
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=60&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:9yKSN-GCB0IC"
+  citations: 40
+
+- id: sam-a-secure-anti-malware-framework-for-the-smartphone-opera-2016
+  title: "SAM: a secure anti-malware framework for the smartphone operating systems"
+  authors: ["MS Iqbal", "M Zulkernine"]
+  venue: "2016 IEEE Wireless Communications and Networking Conference, 1-6, 2016"
+  year: 2016
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=60&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:qjMakFHDy7sC"
+  citations: 9
+
+- id: zonedroid-control-your-droid-through-application-zoning-2016
+  title: "ZoneDroid: Control your Droid through Application Zoning"
+  authors: ["MS Iqbal", "M Zulkernine"]
+  venue: "11th International Conference on Malicious and Unwanted Software, 113-120, 2016"
+  year: 2016
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=40&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:UeHWp8X0CEIC"
+  citations: 3
+
+- id: a-novel-aco-technique-for-fast-and-near-optimal-solutions-fo-2010
+  title: "A novel ACO technique for Fast and Near Optimal Solutions for the Multi-dimensional Multi-choice Knapsack Problem"
+  authors: ["S Iqbal", "MF Bari", "MS Rahman"]
+  venue: "2010 13th International Conference on Computer and Information Technology …, 2010"
+  year: 2010
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=60&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:d1gkVwhDpl0C"
+  citations: 9
+
+- id: solving-the-multi-dimensional-multi-choice-knapsack-problem--2010
+  title: "Solving the multi-dimensional multi-choice knapsack problem with the help of ants"
+  authors: ["S Iqbal", "MF Bari", "MS Rahman"]
+  venue: "International Conference on Swarm Intelligence, 312-323, 2010"
+  year: 2010
+  type: Conference
+  link: "https://scholar.google.com/citations?view_op=view_citation&hl=en&user=cXS5b4sAAAAJ&cstart=60&sortby=pubdate&citation_for_view=cXS5b4sAAAAJ:u-x6o8ySG0sC"
+  citations: 37

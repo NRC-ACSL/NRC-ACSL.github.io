@@ -2,5 +2,9 @@ node_modules
 .astro
 dist
 
+# Secrets (e.g. SERPAPI_KEY for local publication fetches)
+.env
+.env.*
+
 # Local-only notes (not for the repo)
 *.local.md

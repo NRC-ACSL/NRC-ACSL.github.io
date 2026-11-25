@@ -85,6 +85,8 @@ const publications = defineCollection({
     code: z.string().url().optional(),
     award: z.string().optional(),
     bibtex: z.string().optional(),
+    link: z.string().url().optional(), // source link (e.g. Google Scholar entry)
+    citations: z.number().optional(), // "cited by" count from Google Scholar
   }),
 });
 

@@ -17,7 +17,6 @@ const types = [...new Set(pubs.map((p) => p.data.type))].sort();
         <input id="q" type="search" placeholder="Search title, author, venue…" aria-label="Search publications" />
         <select id="year" aria-label="Year"><option value="">All years</option>{years.map((y) => <option>{y}</option>)}</select>
         <select id="type" aria-label="Type"><option value="">All types</option>{types.map((t) => <option>{t}</option>)}</select>
-        <select id="area" aria-label="Research area"><option value="">All areas</option>{areas.map((a) => <option value={a.id}>{a.data.title}</option>)}</select>
       </div>
       <p class="count" id="count"></p>
       {years.map((y) => (
@@ -40,9 +39,7 @@ const types = [...new Set(pubs.map((p) => p.data.type))].sort();
   const q = document.getElementById('q') as HTMLInputElement;
   const year = document.getElementById('year') as HTMLSelectElement;
   const type = document.getElementById('type') as HTMLSelectElement;
-  const area = document.getElementById('area') as HTMLSelectElement;
   const params = new URLSearchParams(location.search);
-  if (params.get('area')) area.value = params.get('area')!;
   if (params.get('q')) q.value = params.get('q')!;
   function apply() {
     const term = q.value.trim().toLowerCase();
@@ -51,7 +48,7 @@ const types = [...new Set(pubs.map((p) => p.data.type))].sort();
       let n = 0;
       g.querySelectorAll<HTMLElement>('.pub').forEach((p) => {
         const show = (!term || p.dataset.search!.includes(term)) && (!year.value || p.dataset.year === year.value) &&
-          (!type.value || p.dataset.type === type.value) && (!area.value || p.dataset.area === area.value);
+          (!type.value || p.dataset.type === type.value);
         p.style.display = show ? '' : 'none'; if (show) n++;
       });
       g.style.display = n ? '' : 'none'; total += n;
@@ -59,6 +56,6 @@ const types = [...new Set(pubs.map((p) => p.data.type))].sort();
     document.getElementById('count')!.textContent = `${total} publication${total === 1 ? '' : 's'}`;
     document.getElementById('empty')!.style.display = total ? 'none' : 'block';
   }
-  [q, year, type, area].forEach((el) => el.addEventListener('input', apply));
+  [q, year, type].forEach((el) => el.addEventListener('input', apply));
   apply();
 </script>
