@@ -1,7 +1,7 @@
 ---
 name: Prof. Maria Garcia
 title: Scientific Advisor, University of Placeholder
-group: advisor
+group: research-associate
 order: 1
 website: https://example.org/
 interests: [AI governance, Security policy]

@@ -1,7 +1,7 @@
 ---
 name: Sam Chen
 title: Postdoctoral Fellow
-group: postdoc
+group: research-associate
 order: 1
 website: https://example.org/
 interests: [Benchmarks, Evaluation methodology]

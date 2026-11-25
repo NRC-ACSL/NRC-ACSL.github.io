@@ -4,21 +4,17 @@ import PageHero from '../../components/PageHero.astro';
 import PersonCard from '../../components/PersonCard.astro';
 import { getCollection } from 'astro:content';
 import { url } from '../../utils';
+import { OWNER } from '../../site.config';
 const people = await getCollection('people');
-const current = people.filter((p) => !p.data.alumni);
+const current = people.filter((p) => !p.data.alumni && p.id !== OWNER);
 const alumni = people.filter((p) => p.data.alumni).sort((a, b) => b.data.alumni!.years.localeCompare(a.data.alumni!.years));
 const groups = [
-  ['leadership', 'Leadership'],
-  ['researcher', 'Research scientists'],
-  ['engineer', 'Research engineers'],
-  ['postdoc', 'Postdoctoral fellows'],
+  ['research-associate', 'Research Associates'],
   ['student', 'Students'],
-  ['advisor', 'Advisors'],
 ] as const;
-const roleLabel: Record<string, string> = { leadership: 'Leadership', researcher: 'Researcher', engineer: 'Engineer', postdoc: 'Postdoc', student: 'Student', advisor: 'Advisor' };
 ---
-<Base title="People" description="Our team members, advisors and alumni.">
-  <PageHero eyebrow="People" title="Our team" intro="Researchers, engineers, fellows and students working on autonomous cyber systems, plus the alumni who helped build the group." crumbs={[{ label: 'People', href: '/people/' }]}>
+<Base title="People" description="The students and research associates I work with, plus alumni.">
+  <PageHero eyebrow="People" title="My group" intro="The students and research associates working with me on autonomous cyber systems, plus the alumni who have moved on to academia, industry and government." crumbs={[{ label: 'People', href: '/people/' }]}>
     <div class="jump">
       {groups.filter(([g]) => current.some((p) => p.data.group === g)).map(([g, label]) => <a href={`#${g}`}>{label}</a>)}
       <a href="#alumni">Past members</a>
@@ -52,7 +48,7 @@ const roleLabel: Record<string, string> = { leadership: 'Leadership', researcher
   </section>
   <section class="alt" style="padding:56px 0">
     <div class="wrap cta-row">
-      <div><h2 style="font-size:1.6rem">Want to join us?</h2><p style="color:var(--muted);margin-top:6px">We regularly hire researchers and engineers and host students and fellows.</p></div>
+      <div><h2 style="font-size:1.6rem">Want to join my group?</h2><p style="color:var(--muted);margin-top:6px">I regularly take on students and research associates and host interns and fellows.</p></div>
       <a class="btn btn-red" href={url('/get-involved/')}><span class="arrow">See opportunities</span></a>
     </div>
   </section>

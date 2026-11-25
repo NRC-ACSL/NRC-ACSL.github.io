@@ -1,7 +1,7 @@
 ---
 name: Priya Lal
 title: Research Scientist
-group: researcher
+group: research-associate
 order: 2
 scholar: https://scholar.google.com/
 interests: [LLM agents, Red-teaming, AI security]

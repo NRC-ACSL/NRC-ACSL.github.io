@@ -6,6 +6,7 @@ import PubItem from '../../../components/PubItem.astro';
 import Icon from '../../../components/Icon.astro';
 import { getCollection, getEntry, getEntries, render, type CollectionEntry } from 'astro:content';
 import { url } from '../../../utils';
+import { SITE } from '../../../site.config';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -53,7 +54,7 @@ const pubs = (await getCollection('publications')).filter((p) => p.data.area?.id
           </dl>
         </div>
         {d.repo && <a class="btn btn-outline" href={d.repo} target="_blank" rel="noopener" style="justify-content:center"><Icon name="github" size={18} />View code on GitHub</a>}
-        <a class="btn btn-red" href={url('/contact/')} style="justify-content:center">Collaborate on this project</a>
+        <a class="btn btn-red" href={`mailto:${SITE.email}`} style="justify-content:center">Collaborate on this project</a>
       </aside>
     </div>
   </section>

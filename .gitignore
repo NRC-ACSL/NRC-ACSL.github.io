@@ -1,3 +1,6 @@
 node_modules
 .astro
 dist
+
+# Local-only notes (not for the repo)
+*.local.md

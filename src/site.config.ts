@@ -1,26 +1,28 @@
 // Global site settings. Change the name here and it updates everywhere.
 export const SITE = {
-  name: 'NRC Autonomous Cyber Research',
-  shortName: 'NRC · ACR',
-  tagline: 'Autonomous Cyber Research',
+  name: 'Shahrear Iqbal',
+  shortName: 'Shahrear Iqbal',
+  tagline: 'Autonomous Cyber Security Research',
   description:
-    'Advancing safe, trustworthy autonomous cyber systems: AI agents that detect, reason about and respond to threats.',
+    'Research scientist working on autonomous cyber defence: AI agents that detect, reason about and respond to threats, safely and accountably.',
   parentOrg: 'National Research Council Canada',
-  email: 'contact@example.org',
+  email: 'AutonomousCyber-CybersecuriteAutonome@nrc-cnrc.gc.ca',
   location: 'Ottawa, Ontario, Canada',
-  // Create a free form at https://formspree.io and paste its ID here (e.g. "xyzabcd").
-  formspreeId: 'YOUR_FORM_ID',
   socials: {
     github: 'https://github.com/nrc-acsl',
     linkedin: 'https://www.linkedin.com/',
   },
 };
 
+// The person who owns this site. Kept in the people collection so existing
+// author/lead/team/publication references resolve, but hidden from people listings.
+export const OWNER = 'shahrear-iqbal';
+
 export const NAV = [
   { label: 'About', href: '/about/' },
   { label: 'Research', href: '/research/' },
   { label: 'Publications', href: '/publications/' },
-  { label: 'News & Blog', href: '/news/' },
+  { label: 'Blog', href: '/news/' },
   { label: 'People', href: '/people/' },
-  { label: 'Get involved', href: '/get-involved/' },
+  { label: 'Join my group', href: '/get-involved/' },
 ];

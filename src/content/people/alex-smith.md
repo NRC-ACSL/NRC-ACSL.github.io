@@ -1,7 +1,7 @@
 ---
 name: Alex Smith
 title: Principal Research Scientist
-group: researcher
+group: research-associate
 order: 1
 github: https://github.com/
 scholar: https://scholar.google.com/

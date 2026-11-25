@@ -1,12 +1,29 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { url, initials } from '../utils';
+import Icon from './Icon.astro';
 interface Props { person: CollectionEntry<'people'>; showNow?: boolean }
 const { person, showNow = false } = Astro.props;
 const p = person.data;
 ---
-<a class="person" href={url(`/people/${person.id}/`)}>
-  <div class="avatar">{p.photo ? <img src={url(p.photo)} alt="" loading="lazy" /> : initials(p.name)}</div>
-  <b>{p.name}</b>
-  <span>{showNow && p.alumni?.now ? `Now: ${p.alumni.now}` : p.title}</span>
-</a>
+<div class="person">
+  <a class="person-main" href={url(`/people/${person.id}/`)}>
+    <div class="avatar">{p.photo ? <img src={url(p.photo)} alt="" loading="lazy" /> : initials(p.name)}</div>
+    <b>{p.name}</b>
+    <span>{showNow && p.alumni?.now ? `Now: ${p.alumni.now}` : p.title}</span>
+  </a>
+  {p.website && (
+    <a class="person-site" href={p.website} target="_blank" rel="noopener" aria-label={`${p.name} — personal site`}>
+      <Icon name="link" size={13} />Website
+    </a>
+  )}
+</div>
+<style>
+  .person{text-align:center;display:flex;flex-direction:column;align-items:center}
+  .person-main{text-decoration:none;display:block}
+  .person-main:hover :global(.avatar){transform:scale(1.04)}
+  .person-main:hover :global(b){color:var(--red-text)}
+  .person-site{display:inline-flex;align-items:center;gap:6px;margin-top:12px;font-size:.78rem;
+    text-decoration:none;padding:5px 12px;border:1px solid var(--line);border-radius:999px;color:var(--muted)}
+  .person-site:hover{border-color:var(--red);color:var(--red-text)}
+</style>

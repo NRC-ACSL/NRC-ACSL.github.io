@@ -1,8 +1,8 @@
 ---
 name: Jane Doe
 title: Director
-group: leadership
-order: 1
+group: research-associate
+order: 2
 email: jane.doe@example.org
 scholar: https://scholar.google.com/
 linkedin: https://www.linkedin.com/

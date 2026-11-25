@@ -1,7 +1,7 @@
 ---
 name: Marc Tremblay
 title: Research Engineer
-group: engineer
+group: research-associate
 order: 1
 github: https://github.com/
 interests: [Cyber ranges, Infrastructure, Open source]

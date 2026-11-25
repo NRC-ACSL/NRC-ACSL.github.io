@@ -1,7 +1,7 @@
 ---
 name: David Alum
 title: Postdoctoral Fellow
-group: postdoc
+group: research-associate
 interests: [Adversarial ML]
 alumni:
   years: 2022–2024

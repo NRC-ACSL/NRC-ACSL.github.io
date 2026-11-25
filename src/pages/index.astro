@@ -3,9 +3,8 @@ import Base from '../layouts/Base.astro';
 import NewsCard from '../components/NewsCard.astro';
 import PersonCard from '../components/PersonCard.astro';
 import Icon from '../components/Icon.astro';
-import ContactForm from '../components/ContactForm.astro';
-import { getCollection } from 'astro:content';
-import { SITE } from '../site.config';
+import { getCollection, getEntry, render } from 'astro:content';
+import { SITE, OWNER } from '../site.config';
 import { url, formatDate } from '../utils';
 
 const news = (await getCollection('news')).sort((a, b) => +b.data.date - +a.data.date);
@@ -14,18 +13,21 @@ const latestNews = news.slice(0, 3);
 const pubs = (await getCollection('publications')).sort((a, b) => b.data.year - a.data.year).slice(0, 3);
 const areas = (await getCollection('areas')).sort((a, b) => a.data.order - b.data.order);
 const people = await getCollection('people');
-const current = people.filter((p) => !p.data.alumni && p.data.group !== 'advisor');
-const order = ['leadership', 'researcher', 'engineer', 'postdoc', 'student'];
+const current = people.filter((p) => !p.data.alumni && p.id !== OWNER);
+const order = ['research-associate', 'student'];
 const team = current.sort((a, b) => order.indexOf(a.data.group) - order.indexOf(b.data.group) || a.data.order - b.data.order).slice(0, 6);
 const allPubs = await getCollection('publications');
 const tools = await getCollection('tools');
 const projects = await getCollection('projects');
 const stats = [
-  [current.length, 'Researchers & engineers'],
+  [current.length, 'Students & research associates'],
   [allPubs.length, 'Publications'],
   [tools.length, 'Open-source tools & datasets'],
   [projects.filter((p) => p.data.status === 'Active').length, 'Active projects'],
 ];
+// Owner bio for the hero — rendered from the owner's person entry.
+const owner = await getEntry('people', OWNER);
+const { Content: OwnerBio } = await render(owner!);
 ---
 <Base>
   <section class="hero">
@@ -38,12 +40,12 @@ const stats = [
     </svg>
     <div class="wrap hero-inner">
       <div>
-        <span class="eyebrow">{SITE.parentOrg}</span>
-        <h1>Building cyber defences that <em>think, adapt</em> and act on their own.</h1>
-        <p class="lead">We research autonomous cyber systems: AI agents that detect, reason about and respond to threats at machine speed. We make sure they are safe, reliable and accountable.</p>
+        <span class="eyebrow">{owner!.data.title}</span>
+        <h1>{owner!.data.name}</h1>
+        <div class="lead prose-invert"><OwnerBio /></div>
         <div class="cta">
-          <a class="btn btn-red" href={url('/research/')}><span class="arrow">Explore our research</span></a>
-          <a class="btn btn-ghost" href={url('/publications/')}>Latest publications</a>
+          <a class="btn btn-red" href={url('/research/')}><span class="arrow">Explore my research</span></a>
+          <a class="btn btn-ghost" href={url('/publications/')}>Publications</a>
         </div>
       </div>
       <div class="terminal" aria-hidden="true">
@@ -67,8 +69,8 @@ const stats = [
   <section>
     <div class="wrap">
       <div class="sec-head">
-        <div><span class="eyebrow">Featured work</span><h2>What we're working on</h2></div>
-        <a class="link" href={url('/news/')}><span class="arrow">All news &amp; blog</span></a>
+        <div><span class="eyebrow">Featured work</span><h2>What I'm working on</h2></div>
+        <a class="link" href={url('/news/')}><span class="arrow">All posts</span></a>
       </div>
       <div class="featured">
         {featured.map((post, i) => <NewsCard post={post} large={i === 0} />)}
@@ -79,19 +81,19 @@ const stats = [
   <section class="alt">
     <div class="wrap mv">
       <div>
-        <span class="eyebrow">Who we are</span>
-        <h2 style="margin:8px 0 36px">Mission &amp; vision</h2>
+        <span class="eyebrow">My focus</span>
+        <h2 style="margin:8px 0 36px">Research mission</h2>
         <div class="mv-block"><span class="eyebrow">Mission</span>
-          <p>To advance the science of autonomous cyber systems and give Canada and its partners trusted, open tools to defend digital infrastructure.</p></div>
+          <p>To advance the science of autonomous cyber systems and build trusted, open tools that help defend digital infrastructure.</p></div>
         <div class="mv-block"><span class="eyebrow">Vision</span>
           <p>A world where autonomous cyber defence is safe, transparent and accountable, and where it strengthens human operators rather than replacing them.</p></div>
-        <a class="link" href={url('/about/')} style="display:inline-block;margin-top:32px"><span class="arrow">More about us</span></a>
+        <a class="link" href={url('/about/')} style="display:inline-block;margin-top:32px"><span class="arrow">More about me</span></a>
       </div>
       <div class="values">
         <div class="value"><h3>Rigour</h3><p>Reproducible methods, open benchmarks, and peer-reviewed results.</p></div>
-        <div class="value"><h3>Openness</h3><p>We release code, data and findings so others can build on them.</p></div>
-        <div class="value"><h3>Responsibility</h3><p>Human oversight and safety are built into every system we design.</p></div>
-        <div class="value"><h3>Collaboration</h3><p>We work with academia, industry and government, in Canada and internationally.</p></div>
+        <div class="value"><h3>Openness</h3><p>I release code, data and findings so others can build on them.</p></div>
+        <div class="value"><h3>Responsibility</h3><p>Human oversight and safety are built into every system I design.</p></div>
+        <div class="value"><h3>Collaboration</h3><p>I work with academia, industry and government, in Canada and internationally.</p></div>
       </div>
     </div>
   </section>
@@ -99,7 +101,7 @@ const stats = [
   <section>
     <div class="wrap">
       <div class="sec-head">
-        <div><span class="eyebrow">Research portfolio</span><h2>Our research areas</h2><p>Four connected programmes, each with active projects, open tools and publications.</p></div>
+        <div><span class="eyebrow">Research portfolio</span><h2>My research areas</h2><p>Four connected programmes, each with active projects, open tools and publications.</p></div>
         <a class="link" href={url('/research/projects/')}><span class="arrow">View all projects</span></a>
       </div>
       <div class="areas">
@@ -130,7 +132,7 @@ const stats = [
         </ul>
       </div>
       <div>
-        <div class="latest-head"><h3>News &amp; blog</h3><a class="link" href={url('/news/')}><span class="arrow">All</span></a></div>
+        <div class="latest-head"><h3>Blog</h3><a class="link" href={url('/news/')}><span class="arrow">All</span></a></div>
         <ul class="list">
           {latestNews.map((n) => (
             <li><a class="item" href={url(`/news/${n.id}/`)}>
@@ -147,7 +149,7 @@ const stats = [
   <section>
     <div class="wrap">
       <div class="sec-head">
-        <div><span class="eyebrow">People</span><h2>Meet the team</h2><p>Researchers, engineers, fellows and students, plus alumni who have gone on to academia, industry and government.</p></div>
+        <div><span class="eyebrow">People</span><h2>My group</h2><p>The students and research associates I work with, plus alumni who have gone on to academia, industry and government.</p></div>
         <a class="link" href={url('/people/')}><span class="arrow">Members &amp; alumni</span></a>
       </div>
       <div class="people home-people">
@@ -158,7 +160,7 @@ const stats = [
 
   <section class="alt" style="padding:64px 0">
     <div class="wrap">
-      <div class="sec-head" style="margin-bottom:24px"><span class="eyebrow">Partners &amp; collaborators</span><a class="link" href={url('/about/#partners')}><span class="arrow">Our partners</span></a></div>
+      <div class="sec-head" style="margin-bottom:24px"><span class="eyebrow">Partners &amp; collaborators</span><a class="link" href={url('/about/#partners')}><span class="arrow">My collaborators</span></a></div>
       <div class="partners">
         {['University partner', 'Industry partner', 'Government partner', 'Research network', 'International partner'].map((p) => <div class="partner">{p}</div>)}
       </div>
@@ -168,16 +170,20 @@ const stats = [
   <section class="join">
     <div class="wrap join-inner">
       <div>
-        <span class="eyebrow" style="color:#FF7A8C">Get involved</span>
+        <span class="eyebrow" style="color:#FF7A8C">Join my group</span>
         <h2 style="margin-top:8px">Help shape the future of autonomous cyber defence</h2>
-        <p>We're looking for researchers, engineers, students and partners who want to build trustworthy autonomous systems.</p>
+        <p>I'm looking for students, research associates and partners who want to build trustworthy autonomous systems.</p>
         <ul class="join-links">
           <li><a href={url('/get-involved/#positions')}>Open positions <span>→</span></a></li>
           <li><a href={url('/get-involved/#students')}>Student &amp; fellowship programmes <span>→</span></a></li>
           <li><a href={url('/get-involved/#collaborate')}>Research collaborations <span>→</span></a></li>
         </ul>
       </div>
-      <ContactForm compact />
+      <div class="join-contact">
+        <h3>Get in touch</h3>
+        <p>Email me and I'll get back to you.</p>
+        <a class="btn btn-red" href={`mailto:${SITE.email}`}><span class="arrow">{SITE.email}</span></a>
+      </div>
     </div>
   </section>
 </Base>
@@ -245,5 +251,10 @@ const stats = [
   .join-links{list-style:none;margin-top:28px;display:grid;gap:10px}
   .join-links a{display:flex;justify-content:space-between;padding:16px 20px;border:1px solid rgba(255,255,255,.14);border-radius:8px;text-decoration:none;font-weight:500}
   .join-links a:hover{border-color:#fff}
+  .join-contact{align-self:center}
+  .join-contact h3{font-size:1.4rem}
+  .join-contact p{color:var(--on-dark-muted);margin:10px 0 20px}
+  .join-contact .btn{word-break:break-all}
+  .hero .lead :global(p){margin:0 0 12px}
   @media (max-width:860px){.join-inner{grid-template-columns:1fr;gap:40px}}
 </style>

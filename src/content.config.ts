@@ -19,7 +19,7 @@ const people = defineCollection({
   schema: z.object({
     name: z.string(),
     title: z.string(), // job title shown on cards
-    group: z.enum(['leadership', 'researcher', 'engineer', 'postdoc', 'student', 'advisor']),
+    group: z.enum(['research-associate', 'student']),
     order: z.number().default(100),
     photo: z.string().regex(/^\//, 'photo must be a root-relative path, e.g. /images/people/jane.jpg').optional(),
     email: z.string().email().optional(),

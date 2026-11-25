@@ -1,7 +1,7 @@
 ---
 name: Emily Past
 title: Research Engineer
-group: engineer
+group: research-associate
 interests: [Cyber ranges]
 alumni:
   years: 2021–2025
